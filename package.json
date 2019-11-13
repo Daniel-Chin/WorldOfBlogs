@@ -1,0 +1,23 @@
+{
+  "name": "world-of-blogs",
+  "version": "1.0.0",
+  "description": "Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-Chin/WorldOfBlogs.git"
+  },
+  "author": "Daniel Chin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-Chin/WorldOfBlogs/issues"
+  },
+  "homepage": "https://github.com/Daniel-Chin/WorldOfBlogs#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1"
+  }
+}
