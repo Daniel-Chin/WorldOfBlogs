@@ -44,9 +44,22 @@ const getAllBlogs = async function () {
   return blogs;
 };
 
+const registerTransact = async (new_user) => {
+  const userRef = db.collection(USERS).doc(new_user.name);
+  return await db.runTransaction(t => {
+    const user = (await t.get(userRef)).data();
+    if (user) { // username collision
+      return Promise.resolve(false);
+    }
+    t.set(userRef, new_user);
+    return Promise.resolve(true);
+  });
+}
+
 module.exports = {
   USERS, BLOGS, 
   getDb, 
   setDb, 
   getAllBlogs,
+  registerTransact,
 };
