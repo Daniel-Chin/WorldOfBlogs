@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const safeCompare = require('safe-compare');
 const { USERS, getDb, setDb, registerTransact } = require('./db');
 
 const SALT_ROUNDS = 10;
@@ -13,7 +14,7 @@ const auth = (req, res, next) => {
   getDb(USERS, username).then((user) => {
     if (user.token) {
       if (user.token.deadline > Date.now()) {
-        if (user.token.value === token) { // timing attack! 
+        if (safeCompare(token, user.token.value)) {
           req.whois = username;
           next();
         }
