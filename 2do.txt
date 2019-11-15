@@ -1,1 +1,13 @@
 bcrypt password len < 72 chars
+username, pw no special char
+word limit
+like and hate: just shows, not affect the suggestion. 
+No like list
+
+Remember me: not optional. there is always cookie
+
+// Blog preview, reuse component.
+// User can change css!
+// react markdown?
+// random blog alt+x
+// Search blog
