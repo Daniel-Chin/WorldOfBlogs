@@ -49,7 +49,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 The database also remembers the max blog id, and a list of holes in the id chain.  
 
 ## API
-All methods require user auth, except `register`, `checkUserName`, and `login`.  
+All methods require user auth, except `user/register`, `user/checkUsername`, and `user/login`.  
 If auth fails, HTTP 403 and clear cookie.  
 
 ### view
@@ -59,12 +59,12 @@ Request: GET, cookie
 Response: `{ title, content, likes, hates, owner, last_modified }`  
 If last view has not expired, response is `false`.  
 
-### checkUserName
+### user/checkUsername
 Request: GET, ? username  
 Response: `true` or `false`  
 True when the username is available.  
 
-### register
+### user/register
 Request: GET, ? username & password  
 Response: 
 ```js
@@ -74,7 +74,7 @@ Response:
 }
 ```
 
-### login
+### user/login
 Request: GET, ? username & password  
 Response: 
 ```js
@@ -85,17 +85,27 @@ Response:
 ``` 
 and set cookie.  
 
-### editUser
+### user/whoami
+This is for front end to know if user auth ok  
+Request: GET, cookie  
+Response: `username`  
+
+### user/edit
 Request: POST, cookie, body: `{ quote }`  
 Response: 'ok'  
 
-### changePassword
-Request: GET, cookie, ? old & new  
+### user/changePassword
+Request: GET, cookie, ? old_password & new_password  
 (username is in cookie)  
-Response: `true` and set cookie.  
-If password incorrect, response is `false`.  
+Response: 
+```js
+{
+  is_ok: true | false, 
+  message: 'Error message', 
+}
+```
 
-### logout
+### user/logout
 Request: GET, cookie  
 Response: 'ok', and clear cookie.  
 
@@ -123,7 +133,7 @@ Response:
 ]
 ```
 
-### getUser
+### user/get
 Request: GET, cookie, ? username  
 Response: `{ quote, n_blogs }`  
 If user does not exist, response is `false`.  
