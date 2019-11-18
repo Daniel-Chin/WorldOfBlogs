@@ -7,7 +7,7 @@ const {
   USERS, BLOGS, DELETED, getDb, setDb, opinionTransact, 
   newBlogTransact, purgeBlog, 
 } = require('./db');
-const { MAX_READ_TIME, estimateReadTime } = require('./misc');
+const { MAX_READ_TIME, estimateReadTime } = require('./front/src/helper/blogUtils');
 
 const REJECTION_MAX_TRY = 32;
 
