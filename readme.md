@@ -168,22 +168,25 @@ Response: 'ok'
   already have an account? log in
 ### /login
   if you are logged in, "But you are already logged in." Log out button
-###  /logout
+### /logout
   log out button. to '/'
 ### /view
   if not logged: it is very important that you register.
-  rate
   this many ppl liked. hated.
+  rate
   next | dashboard | post a blog
 ### /dashboard
   change pw
   my blogs
   history
+  link to /user/{me}
 ### /user/:username
+  quote
   Shows how many blogs, but no link
 ### /history/:index
 ### /mine/:index
-###  /edit/:mineindex
+### /edit/:mine_index
 ### /new
 ### /invalid-cookie
-  'Your sign in has expired. '
+  'Your sign in has expired. '  
+https://www.npmjs.com/package/react-tooltip  
