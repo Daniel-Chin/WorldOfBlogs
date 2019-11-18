@@ -1,0 +1,29 @@
+.centerAlign {
+  text-align: center;
+}
+
+.button {
+  transition: .2s;
+  cursor: pointer;
+  margin: auto;
+  padding: 7px 50px 10px;
+  display:inline-block;
+  border-radius: 5px;
+} .button:hover {
+  transform: scale(1.2);
+} .button:focus {
+  transform: scale(1.2);
+} .button:active {
+  transform: scale(.9);
+}
+
+.greenButton {
+  background-color: #080;
+  color: white;
+} .greenButton:hover {
+  background-color: #0a0;
+} .greenButton:focus {
+  background-color: #0a0;
+} .greenButton:active {
+  background-color: #060;
+}
