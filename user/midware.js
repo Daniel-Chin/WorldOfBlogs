@@ -19,7 +19,7 @@ const authMidware = async (req, res, next) => {
   // clear cookies
   res.cookie(COOKIE.USERNAME, 0, { maxAge: Date.now() });
   res.cookie(COOKIE.TOKEN, 0, { maxAge: Date.now() });
-  res.status(403).send('403 Forbidden: User auth failed');
+  res.status(401).send('401 Unauthorized: User auth failed');
 };
 
 module.exports = authMidware;
