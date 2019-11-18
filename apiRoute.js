@@ -21,38 +21,35 @@ apiRouter.use('/user', userRouter);
 apiRouter.get('/view', authMidware, async (req, res) => {
   const history = req.user.history;
   const last_view = history[history.length - 1];
-  if (last_view) {
-    if (last_view.expire > Date.now()) {
-      // Last view not expired yet
-      res.json(false);
-      return;
-    }
-  }
-  const max_id = (await getDb('max_id', 'value')).value;
   let blog;
-  let tries = 0;
-  while (! blog) {
-    if (tries ++ >= REJECTION_MAX_TRY) {
-      res.json(false);
-      return;
+  if (last_view && last_view.expire > Date.now()) {
+    // Last view not expired yet
+    blog = await getDb(BLOGS, last_view.blog);
+  } else {
+    const max_id = (await getDb('max_id', 'value')).value;
+    let tries = 0;
+    while (! blog) {
+      if (tries ++ >= REJECTION_MAX_TRY) {
+        res.json(false);
+        return;
+      }
+      blog = await getDb(BLOGS, 
+        Math.floor(Math.random() * (max_id + 1)).toString()
+      );
     }
-    blog = await getDb(BLOGS, 
-      Math.floor(Math.random() * (max_id + 1)).toString()
-    );
+    // update user.history
+    setDb(USERS, req.user.name, {
+      ...req.user, 
+      history: [
+        ...history, 
+        {
+          blog: blog.id, 
+          expire: Date.now() + blog.read_time, 
+        }, 
+      ], 
+    });
   }
   res.json(blogAddOpinionDelId(blog, req.user));
-
-  // update user.history
-  await setDb(USERS, req.user.name, {
-    ...req.user, 
-    history: [
-      ...history, 
-      {
-        blog: blog.id, 
-        expire: Date.now() + blog.read_time, 
-      }, 
-    ], 
-  });
 });
 
 apiRouter.get('/rate', authMidware, (req, res) => {
