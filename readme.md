@@ -23,13 +23,12 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
   history: [
     {
       blog: 'blog id', 
-      opinion: 'like' | 'hate' | 'none', 
+      expire: 1573664371547, 
     }
   ],
-  last_view: {
-    blog: 'blog id', 
-    expire: 1573664371547, 
-  }
+  opinions: {
+    [blog_id]: 'like' | 'hate' | 'none', 
+  },
 }
 ```
 
@@ -43,10 +42,11 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
   hates: 69, 
   owner: 'username', 
   last_modified: 1573664371547, 
+  read_time: 120, 
 }
 ```
 
-The database also remembers the max blog id, and a list of holes in the id chain.  
+The database also remembers the max blog id, and a linked list of holes in the id chain.  
 
 ## API
 All methods require user auth, except `user/register`, `user/checkUsername`, and `user/login`.  
@@ -56,8 +56,9 @@ If auth fails, HTTP 403 and clear cookie.
 Gives a random blog that the user has not viewed.  
 (Rejection sampling, max try = 32)  
 Request: GET, cookie  
-Response: `{ title, content, likes, hates, owner, last_modified }`  
+Response: `{ title, content, likes, hates, owner, last_modified, my_opinion }`  
 If last view has not expired, response is `false`.  
+If rejection sampling failed, response is `false`.  
 
 ### user/checkUsername
 Request: GET, ? username  

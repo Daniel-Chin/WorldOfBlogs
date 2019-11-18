@@ -41,6 +41,7 @@ userRouter.get('/register', async (req, res) => {
     quote: 'Say something...',
     mine: [], 
     history: [], 
+    opinions: {},
   });
   if (result) {
     res.json({
