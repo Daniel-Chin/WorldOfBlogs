@@ -19,13 +19,13 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
   }, 
   mine: [
     'blog id', 'blog id...', 
-  ],
+  ],  // 'deleted' if blog is deleted.  
   history: [
     {
       blog: 'blog id', 
       expire: 1573664371547, 
-    }
-  ],
+    } // 'deleted' if blog is deleted.  
+  ],  // should have used Firestore subcollections...
   opinions: {
     [blog_id]: 'like' | 'hate' | 'none', 
   },
@@ -35,7 +35,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 ### Blog
 ```js
 {
-  id: 1628,   // incremental
+  id: '1628',   // incremental
   title: 'clickbait', 
   content: 'blah blah blah', 
   likes: 4, 
@@ -46,7 +46,8 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 }
 ```
 
-The database also remembers the max blog id, and a linked list of holes in the id chain.  
+The id for blogs are incremental integers. This is for randomly sampling a blog to be O(1) and theta(1). The disadvantage is that one id may point to different blogs when the original is deleted, so we have to purge all the pointers to the deleted blog, so deletion of a blog becomes O(n^2).  
+The database also remembers the max blog id, and a linked list of holes in the id chain. Adding a new blog fills the holes first.  
 
 ## API
 All methods require user auth, except `user/register`, `user/checkUsername`, and `user/login`.  
@@ -120,7 +121,7 @@ Response:
 ```js
 [
   { title, last_modified }, 
-  ...
+  ... // `false` if blog is deleted
 ]
 ```
 
@@ -130,7 +131,7 @@ Response:
 ```js
 [
   { title, owner, last_modified }, 
-  ...
+  ... // `false` if blog is deleted
 ]
 ```
 
@@ -145,10 +146,10 @@ Response: `{ title, content, likes, hates, owner, last_modified }`
 
 ### getHistory
 Request: GET, cookie, ? history_index  
-Response: `{ title, content, likes, hates, owner, last_modified }`  
+Response: `{ title, content, likes, hates, owner, last_modified, my_opinion }`  
 
 ### addBlog
-Request: POST, cookie  
+Request: GET, cookie  
 Response: `mine_index`  
 
 ### editBlog
@@ -156,6 +157,7 @@ Request: POST, cookie, body: `{ title, content, mine_index }`
 Response: `{ is_ok, message }`  
 
 ### delBlog
+Also deletes all pointers to the blog.  
 Request: GET, cookie, ? mine_index  
 Response: 'ok'  
 
