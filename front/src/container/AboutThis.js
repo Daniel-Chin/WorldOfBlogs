@@ -38,7 +38,7 @@ const AboutThis = () => {
         You shall read the unbiased world, <br />
         one blog at a time. 
       </p>
-      <div className='button greenButton' tabIndex={0}>
+      <div className='button blueButton' tabIndex={0}>
         Start
       </div>
     </div>

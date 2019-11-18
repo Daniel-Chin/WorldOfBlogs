@@ -9,21 +9,29 @@
   padding: 7px 50px 10px;
   display:inline-block;
   border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: solid 1px;
 } .button:hover {
   transform: scale(1.2);
+  background-color: white;
+  color: black;
 } .button:focus {
   transform: scale(1.2);
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+  border-color: rgba(0, 0, 0, 0);
 } .button:active {
   transform: scale(.9);
 }
 
 .greenButton {
   background-color: #080;
-  color: white;
-} .greenButton:hover {
-  background-color: #0a0;
-} .greenButton:focus {
-  background-color: #0a0;
-} .greenButton:active {
-  background-color: #060;
+  border-color: #080;
+}
+
+.blueButton {
+  background-color: #00a;
+  border-color: #00a;
 }
