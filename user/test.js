@@ -1,4 +1,4 @@
-const axios = require('axios'); // dev dependency
+// const axios = require('axios'); // dev dependency
 
 /* 
 https://codewithhugo.com/pass-cookies-axios-fetch-requests/
