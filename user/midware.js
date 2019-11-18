@@ -3,14 +3,13 @@ const { USERS, getDb } = require('../db');
 const { COOKIE } = require('./helper');
 
 const authMidware = async (req, res, next) => {
-  req.whois = null;
   const { username, token } = req.cookies;
   if (username) {
     const user = await getDb(USERS, username);
     if (user && user.token) {
       if (user.token.deadline > Date.now()) {
         if (safeCompare(token, user.token.value)) {
-          req.whois = username;
+          req.user = user;
           next();
           return;
         }

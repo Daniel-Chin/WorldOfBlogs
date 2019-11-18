@@ -99,8 +99,8 @@ userRouter.get('/whoami', authMidware, (req, res) => {
 
 userRouter.post('/edit', authMidware, async (req, res) => {
   const { quote } = req.body;
-  const user = await getDb(USERS, req.whois);
-  await setDb(USERS, req.whois, {
+  const user = req.user;
+  await setDb(USERS, user.name, {
     ...user, 
     quote, 
   });
@@ -114,10 +114,10 @@ userRouter.get('/changePassword', authMidware, async (req, res) => {
     res.json(password_valid);
     return;
   }
-  const user = await getDb(USERS, req.whois);
+  const user = req.user;
   if (await bcrypt.compare(old_password, user.hash)) {
     const hash = await bcrypt.hash(new_password, SALT_ROUNDS);
-    await setDb(USERS, req.whois, {
+    await setDb(USERS, user.name, {
       ...user, 
       hash, 
     });
@@ -133,8 +133,8 @@ userRouter.get('/changePassword', authMidware, async (req, res) => {
 });
 
 userRouter.get('/logout', authMidware, async (req, res) => {
-  const user = await getDb(USERS, req.whois);
-  await setDb(USERS, req.whois, {
+  const user = req.user;
+  await setDb(USERS, user.name, {
     ...user, 
     token: null, 
   });
