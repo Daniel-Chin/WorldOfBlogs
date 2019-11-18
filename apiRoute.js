@@ -186,6 +186,10 @@ apiRouter.get('/delBlog', authMidware, async (req, res) => {
   res.send('ok');
 });
 
+apiRouter.get('/status', (_, res) => {
+  res.send('ok');
+});
+
 const blogAddOpinionDelId = (blog, user) => (
   {
     ...blog, 
