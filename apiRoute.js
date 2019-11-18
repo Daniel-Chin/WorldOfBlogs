@@ -148,7 +148,8 @@ apiRouter.get('/addBlog', authMidware, async (req, res) => {
 
 apiRouter.post('/editBlog', authMidware, async (req, res) => {
   const { title, content, mine_index } = req.body;
-  if (estimateReadTime({ title, content }) > MAX_READ_TIME) {
+  const read_time = estimateReadTime({ title, content });
+  if (read_time > MAX_READ_TIME) {
     res.json({
       is_ok: false, 
       message: 'Blog too long. ', 
@@ -168,6 +169,7 @@ apiRouter.post('/editBlog', authMidware, async (req, res) => {
     ...blog, 
     title, 
     content, 
+    read_time, 
   });
   res.json({
     is_ok: true, 
