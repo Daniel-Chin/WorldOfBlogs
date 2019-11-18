@@ -1,6 +1,6 @@
 module.exports = {
     'env': {
-        'browser': true,
+        'node': true,
         'commonjs': true,
         'es6': true
     },
@@ -14,20 +14,35 @@ module.exports = {
     },
     'rules': {
         'indent': [
-            'error',
+            'warn',
             2
         ],
         'linebreak-style': [
-            'error',
+            'warn',
             'unix'
         ],
-        'quotes': [
-            'error',
-            'single'
-        ],
         'semi': [
-            'error',
+            'warn',
             'always'
+        ], 
+        'no-unused-vars': [
+            0
+        ], 
+        'yoda': [
+            'warn'
+        ], 
+        'comma-dangle': [
+            'warn',
+            {
+                arrays: 'always-multiline', 
+                objects: 'always-multiline', 
+                imports: 'always-multiline', 
+                exports: 'always-multiline', 
+                functions: 'never'
+            }
+        ], 
+        'eol-last': [
+            'warn'
         ]
     }
 };
