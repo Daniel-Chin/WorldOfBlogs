@@ -19,7 +19,7 @@ userRouter.get('/checkUsername', (req, res) => {
     } else {
       res.json(true);
     }
-  })
+  });
 });
 
 userRouter.get('/register', async (req, res) => {
@@ -73,7 +73,7 @@ userRouter.get('/login', async (req, res) => {
       token: {
         value: token, 
         deadline: Date.now() + TEN_YEARS,
-      }
+      },
     });
     res.cookie(COOKIE.USERNAME, username, {
       httpOnly: true, 

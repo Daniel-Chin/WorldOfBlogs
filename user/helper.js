@@ -26,7 +26,7 @@ const isPasswordValid = (password) => {
   return {
     is_ok: error_message === null, 
     message: error_message, 
-  }
+  };
 };
 
 const isUsernameValid = (username) => {
@@ -56,7 +56,7 @@ const isUsernameValid = (username) => {
   return {
     is_ok: error_message === null, 
     message: error_message, 
-  }
+  };
 };
 
 module.exports = {
