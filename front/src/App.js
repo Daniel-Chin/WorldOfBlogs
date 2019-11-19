@@ -25,7 +25,12 @@ const App = () => {
   if (invalid_cookie) {
     return (
       <Switch>
-        <Route exact path='/invalid-cookie' render={InvalidCookiePage} />
+        <Route exact path='/invalid-cookie'>
+          <InvalidCookiePage 
+            whoami={whoami} setWhoami={setWhoami} 
+            invalid_cookie={invalid_cookie} unAuth={unAuth}
+          />
+        </Route>
         <Route>
           <Redirect to='/invalid-cookie' />
         </Route>
@@ -42,7 +47,9 @@ const App = () => {
         />
       </Route>
       <Route exact path='/login' render={LoginPage} />
-      <Route exact path='/logout' render={LogoutPage} />
+      <Route exact path='/logout'>
+        <LogoutPage whoami={whoami} setWhoami={setWhoami} />
+      </Route>
       <Route exact path='/view' render={ViewPage} />
       <Route exact path='/dashboard' render={DashboardPage} />
       <Route exact path='/user/:username' render={UserPage} />
@@ -50,7 +57,12 @@ const App = () => {
       <Route exact path='/mine/:index' render={MinePage} />
       <Route exact path='/edit/:mine_index' render={EditPage} />
       <Route exact path='/new' render={NewPage} />
-      <Route exact path='/invalid-cookie' render={InvalidCookiePage} />
+      <Route exact path='/invalid-cookie'>
+        <InvalidCookiePage 
+          whoami={whoami} setWhoami={setWhoami} 
+          invalid_cookie={invalid_cookie} unAuth={unAuth}
+        />
+      </Route>
       <Route>
         404 No such URL
       </Route>
