@@ -1,7 +1,7 @@
 const MAX_READ_TIME = 0;
 
 const wordTime = (word) => (
-  .17 + .1 * word.length
+  187.7 + 90 * word.length
 );
 
 const parseText = (text) => {
