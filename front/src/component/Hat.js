@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 
 const Hat = ({ whoami }) => {
-  whoami='daniel'
   return (
     <div className='Hat'>
       <Link to='/view' className='Link floatLeft' style={{
