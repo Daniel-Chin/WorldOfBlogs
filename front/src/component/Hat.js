@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 
 const Hat = ({ whoami }) => {
+  whoami='daniel'
   return (
     <div className='Hat'>
       <Link to='/view' className='Link floatLeft' style={{
@@ -13,14 +14,14 @@ const Hat = ({ whoami }) => {
       {whoami &&
         <div className='floatRight'>
           <Dropdown>
-            <Dropdown.Toggle variant="secondary" size='sm'>
+            <Dropdown.Toggle className='button whiteButton' variant='outline-light' size='sm'>
               {whoami}
             </Dropdown.Toggle>
             <Dropdown.Menu alignRight>
-              <Dropdown.Item href="#/view">World of Blogs</Dropdown.Item>
-              <Dropdown.Item href="#/dashboard">Dashboard</Dropdown.Item>
-              <Dropdown.Item href="#/new">Write a Blog</Dropdown.Item>
-              <Dropdown.Item href="#/logout">Sign Out</Dropdown.Item>
+              <Dropdown.Item className='button whiteButton' href="#/view">World of Blogs</Dropdown.Item>
+              <Dropdown.Item className='button whiteButton' href="#/dashboard">Dashboard</Dropdown.Item>
+              <Dropdown.Item className='button whiteButton' href="#/new">Write a Blog</Dropdown.Item>
+              <Dropdown.Item className='button whiteButton' href="#/logout">Sign Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
