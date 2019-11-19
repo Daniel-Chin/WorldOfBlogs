@@ -16,11 +16,13 @@ apiRouter.use(cookieParser());    // req.cookies
 apiRouter.use(bodyParser.urlencoded({ extended: false }));
 apiRouter.use(bodyParser.json());
 
-apiRouter.use((req, _, next) => {
-  const { method, url, query, params, cookies } = req;
-  console.log({ method, url, query, params, cookies });
-  next();
-});
+if (! process.env.PROD) {
+  apiRouter.use((req, _, next) => {
+    const { method, url, query, params, cookies } = req;
+    console.log({ method, url, query, params, cookies });
+    next();
+  });
+}
 
 apiRouter.use('/user', userRouter);
 
