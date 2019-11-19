@@ -30,7 +30,7 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
         }
       );
     }
-  }, [username_to_check, setAvailable]);
+  }, [username_to_check, setAvailable, unAuth]);
 
   if (whoami !== null && register_state === 'none') {
     // Already logged in.
