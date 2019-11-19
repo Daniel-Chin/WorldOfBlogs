@@ -18,9 +18,16 @@ let which = new Promise((resolve, _) => {
 });
 // const which = 'prod';
 
-const API = async (verb, url, more, unAuth) => {
+const API = async (method, url, data, config, unAuth) => {
+  console.log(config);
   try {
-    return (await verb(HOST[await which] + url, more)).data;
+    return (await axios({
+      method, 
+      url: HOST[await which] + url,
+      data, 
+      ...config, 
+      withCredentials: true, 
+    })).data;
   } catch (e) {
     if (e.response) {
       if (e.response.status === 401) {
@@ -30,19 +37,19 @@ const API = async (verb, url, more, unAuth) => {
   }
 };
 
-const GET = async (url, options, unAuth) => (
-  await API(axios.get, url, options, unAuth)
+const GET = async (url, config, unAuth) => (
+  await API('get', url, {}, config, unAuth)
 );
 
-const POST = async (url, body, unAuth) => (
-  await API(axios.post, url, body, unAuth)
+const POST = async (url, data, unAuth) => (
+  await API('post', url, data, {}, unAuth)
 );
 
 const login = async (credentials, setWhoami) => {
   const res = await GET('user/login', {
     params: credentials, 
   });
-  if (res.is_ok) {
+  if (res && res.is_ok) {
     setWhoami(credentials.username);
     return true;
   } else {

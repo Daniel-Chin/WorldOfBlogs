@@ -8,7 +8,7 @@ const { COOKIE, isPasswordValid, isUsernameValid } = require('./helper');
 const authMidware = require('./midware');
 
 const SALT_ROUNDS = 10;
-const TEN_YEARS = 60 * 60 * 24 * 365 * 10;
+const TEN_YEARS = 60 * 60 * 24 * 365 * 10 * 1000;
 
 const userRouter = express.Router();
 
@@ -77,11 +77,11 @@ userRouter.get('/login', async (req, res) => {
     });
     res.cookie(COOKIE.USERNAME, username, {
       httpOnly: true, 
-      maxAge: 900000, 
+      maxAge: TEN_YEARS, 
     });
     res.cookie(COOKIE.TOKEN, token, {
       httpOnly: true, 
-      maxAge: 900000, 
+      maxAge: TEN_YEARS, 
     });
     res.json({
       is_ok: true, 
@@ -139,8 +139,8 @@ userRouter.get('/logout', authMidware, async (req, res) => {
     ...user, 
     token: null, 
   });
-  res.cookie(COOKIE.USERNAME, 0, { maxAge: Date.now() });
-  res.cookie(COOKIE.TOKEN, 0, { maxAge: Date.now() });
+  res.cookie(COOKIE.USERNAME, 0, { maxAge: 0 });
+  res.cookie(COOKIE.TOKEN, 0, { maxAge: 0 });
   res.send('ok');
 });
 

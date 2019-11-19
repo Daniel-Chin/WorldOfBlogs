@@ -17,8 +17,8 @@ const authMidware = async (req, res, next) => {
     }
   }
   // clear cookies
-  res.cookie(COOKIE.USERNAME, 0, { maxAge: Date.now() });
-  res.cookie(COOKIE.TOKEN, 0, { maxAge: Date.now() });
+  res.cookie(COOKIE.USERNAME, 0, { maxAge: 0 });
+  res.cookie(COOKIE.TOKEN, 0, { maxAge: 0 });
   res.status(401).send('401 Unauthorized: User auth failed');
 };
 
