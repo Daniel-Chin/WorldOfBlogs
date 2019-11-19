@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import CheckUsernameCard from './CheckUsernameCard';
 import { enterMeansClick } from '../helper/misc';
 
 const CredentialsCard = ({ 
-  title, fetch_state, onEnter, available, 
+  title, fetch_state, onEnter, available, login_link, 
   onUsernameChange, onPasswordChange, onUsernameBlur,
 }) => {
   return (
@@ -46,6 +47,14 @@ const CredentialsCard = ({
         </div>
       :
         'Loading...'
+      }
+      {login_link &&
+        <p className='mb-0'>
+          Otherwise,{' '}
+          <Link to='/login'>
+            Sign in
+          </Link>
+        </p>
       }
     </div>
   );
