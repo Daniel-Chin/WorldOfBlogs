@@ -7,6 +7,7 @@ import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <HashRouter>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <App />
   </HashRouter>, 
   document.getElementById('root')
