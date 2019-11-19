@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Hat from '../component/Hat';
 import { enterMeansClick } from '../helper/misc';
 import { GET } from '../helper/api';
 
-const LogoutPage = ({ whoami, setWhoamim, unAuth }) => {
-  const [logged_out, setLogged_out] = useState(false);
-
+const LogoutPage = ({ whoami, setWhoami, unAuth }) => {
   const logout = () => {
     GET('user/logout', {}, unAuth).then(() => {
-      setLogged_out(true);
+      setWhoami(null);
     });
   };
 
@@ -17,7 +15,7 @@ const LogoutPage = ({ whoami, setWhoamim, unAuth }) => {
     alert('I guess you just have to never sign out.');
   };
 
-  if (logged_out) {
+  if (! whoami) {
     return <Redirect to='/' />
   }
 
