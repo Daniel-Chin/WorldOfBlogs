@@ -15,7 +15,8 @@ const isPasswordValid = (password) => {
     error_message = 'Password must be at least 6 characters long. ';
   }
   if (password.length >= 72) {
-    error_message = 'Password cannot be longer than 71 characters, as bcrypt algorithm requires. ';
+    error_message = 'Password cannot be longer than 71 characters, as bcrypt algorithm requires. '
+      + `Current password length is ${password.length}. `;
   }
   for (let char of password) {
     if (! all_legal.includes(char)) {
@@ -34,6 +35,9 @@ const isUsernameValid = (username) => {
   const all_legal = ALL_LETTERS + '1234567890_- .';
   let error_message = null;
 
+  if (! ALL_LETTERS.includes(username[0])) {
+    error_message = `Username must start with a letter, not "${username[0]}". `;
+  }
   if (username.length < 4) {
     error_message = 'Username must be at least 4 characters long. ';
   }
@@ -41,12 +45,9 @@ const isUsernameValid = (username) => {
     error_message = 'Username cannot be longer than 31 characters. ' +
       `Your username is ${username.length} characters long. `;
   }
-  if (! ALL_LETTERS.includes(username[0])) {
-    error_message = `Username must start with a letter, not "${username[0]}". `;
-  }
   for (let char of username) {
     if (! all_legal.includes(char)) {
-      error_message = `Username cannot include "${char}"`;
+      error_message = `Username cannot include "${char}". Allowed: letters, numbers, underscore(_), hyphen(-), whitespace( ), period(.)`;
       break;
     }
   }

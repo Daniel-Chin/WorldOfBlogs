@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.Link{
+  color: inherit;
+  text-decoration: none;
+}
+
 .button {
   transition: .2s;
   cursor: pointer;
@@ -12,6 +17,7 @@
   background-color: black;
   color: white;
   border: solid 1px;
+  text-align: center;
 } .button:hover {
   transform: scale(1.2);
   background-color: white;
@@ -34,4 +40,62 @@
 .blueButton {
   background-color: #00a;
   border-color: #00a;
+}
+
+.grayButton {
+  background-color: #666;
+  border-color: #666;
+}
+
+.whiteButton {
+  color: black;
+  background-color: white;
+  border-color: white;
+  padding: 0 10px;
+} .whiteButton:hover {
+  border-color: gray;
+} .whiteButton:focus {
+  border-color: gray;
+}
+
+.Hat {
+  padding: 10px 20px;
+  border-bottom: solid 1px gray;
+}
+
+.floatLeft {
+  float: left;
+}
+.floatRight {
+  float: right;
+}
+.floatClear {
+  clear: both;
+}
+
+.RegisterCard {
+  margin: 10px calc(40% - 100px);
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.CheckUsernameCard {
+  color: white;
+  background-color: white;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.errorModalHead {
+  background-color: #900;
+  color: white;
+  padding: 10px 20px; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-block-end: 0;
+}
+
+.errorModalBody {
+  padding: 10px 20px; 
 }
