@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const InvalidCookiePage = ({ whoami, setWhoami, invalid_cookie, unAuth }) => {
   useEffect(() => {
-    if (whoami) {
+    if (whoami !== null) {
       setWhoami(null);
     }
   }, [whoami, setWhoami]);
   useEffect(() => {
-    if (invalid_cookie) {
+    if (invalid_cookie !== false) {
       unAuth(false);
     }
   }, [invalid_cookie, unAuth]);

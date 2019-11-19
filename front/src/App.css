@@ -42,6 +42,11 @@
   border-color: #00a;
 }
 
+.redButton {
+  background-color: #800;
+  border-color: #800;
+}
+
 .grayButton {
   background-color: #666;
   border-color: #666;
@@ -73,7 +78,7 @@
   clear: both;
 }
 
-.RegisterCard {
+.credentialsCard {
   margin: 10px calc(40% - 100px);
   padding: 20px;
   border: 1px solid #ccc;
@@ -98,4 +103,11 @@
 
 .errorModalBody {
   padding: 10px 20px; 
+}
+
+.underlink {
+  color: #00f;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 70%;
 }

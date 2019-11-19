@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Modal from 'react-modal';
 import AboutThis from './container/AboutThis';
@@ -13,12 +13,25 @@ import MinePage from './container/MinePage';
 import EditPage from './container/EditPage';
 import NewPage from './container/NewPage';
 import InvalidCookiePage from './container/InvalidCookiePage';
+import { GET } from './helper/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 const App = () => {
   const [whoami, setWhoami] = useState(null);
   const [invalid_cookie, unAuth] = useState(false);
+  const [did_try_login, setDid_try_login] = useState(false);
+
+  useEffect(() => {
+    if (! did_try_login) {
+      setDid_try_login(true);
+      GET('user/whoami', {}, () => {}).then((res) => {
+        if (res) {
+          setWhoami(res);
+        }
+      }).catch((_) => {});
+    }
+  }, [did_try_login, setWhoami, setDid_try_login]);
 
   Modal.setAppElement('#root');
 
@@ -46,9 +59,11 @@ const App = () => {
           whoami={whoami} unAuth={unAuth} setWhoami={setWhoami}
         />
       </Route>
-      <Route exact path='/login' render={LoginPage} />
+      <Route exact path='/login'>
+        <LoginPage whoami={whoami} setWhoami={setWhoami} />
+      </Route>
       <Route exact path='/logout'>
-        <LogoutPage whoami={whoami} setWhoami={setWhoami} />
+        <LogoutPage whoami={whoami} setWhoami={setWhoami} unAuth={unAuth} />
       </Route>
       <Route exact path='/view' render={ViewPage} />
       <Route exact path='/dashboard' render={DashboardPage} />
