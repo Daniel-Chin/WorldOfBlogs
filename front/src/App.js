@@ -75,7 +75,9 @@ const App = () => {
       <Route exact path='/history/:index' render={HistoryPage} />
       <Route exact path='/mine/:index' render={MinePage} />
       <Route exact path='/edit/:mine_index' render={EditPage} />
-      <Route exact path='/new' render={NewPage} />
+      <Route exact path='/new'>
+        <NewPage unAuth={unAuth} />
+      </Route>
       <Route exact path='/invalid-cookie'>
         <InvalidCookiePage 
           whoami={whoami} setWhoami={setWhoami} 

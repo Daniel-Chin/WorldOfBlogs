@@ -1,4 +1,5 @@
 tooltips
+ask discard if blog empty
 
 to test:
   resume read
