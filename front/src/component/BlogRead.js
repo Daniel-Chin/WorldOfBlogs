@@ -75,12 +75,12 @@ const BlogRead = ({ blog, setPage }) => {
           </span>
         </FloatIn>
       </div>
-      {stage >= 3 &&
+      <FloatIn show={stage >= 3}>
         <TypeWriter 
           parsed={parsed_content} onEnd={updateStage.bind(4)} 
           access_time={access_time}
         />
-      }
+      </FloatIn>
       <FloatIn show={stage >= 4}>
         <div className='centerAlign'>
           <div

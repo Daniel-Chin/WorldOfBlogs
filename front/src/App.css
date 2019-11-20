@@ -112,7 +112,13 @@
   color: #00f;
   text-decoration: underline;
   cursor: pointer;
+  transition: .2s;
   font-size: 70%;
+  display:inline-block;
+} .underlink:hover {
+  transform: scale(1.4);
+} .underlink:focus {
+  transform: scale(1.4);
 }
 
 .BlogRead {
@@ -138,4 +144,9 @@
   background-color: #800;
   color: white;
   padding: 10px;
+}
+
+.BlogRate {
+  text-align: center;
+  margin: 20px;
 }
