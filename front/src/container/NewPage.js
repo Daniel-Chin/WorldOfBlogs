@@ -15,7 +15,7 @@ const NewPage = ({ unAuth }) => {
         setMine_index(JSON.parse(res));
       });
     }
-  }, [mine_index, setMine_index]);
+  }, [mine_index, setMine_index, unAuth]);
 
   if (mine_index !== null) {
     return <Redirect to={`/edit/${mine_index}`} />
