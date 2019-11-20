@@ -140,6 +140,10 @@ const purgeBlog = async (blog_id) => {
         }
         return x;
       });
+      if (user.opinions[blog_id]) {
+        modified = true;
+        delete user.opinions[blog_id];
+      }
       if (modified) {
         t.set(USERS.doc(doc.id), user);
       }
