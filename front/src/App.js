@@ -66,7 +66,7 @@ const App = () => {
         <LogoutPage whoami={whoami} setWhoami={setWhoami} unAuth={unAuth} />
       </Route>
       <Route exact path='/view'>
-        <ViewPage whoami={whoami} />
+        <ViewPage whoami={whoami} unAuth={unAuth} />
       </Route>
       <Route exact path='/dashboard' render={DashboardPage} />
       <Route exact path='/user/:username' render={UserPage} />
