@@ -1,32 +1,39 @@
-const MAX_READ_TIME = 0;
+const MAX_READ_TIME = 2 * 60 * 1000;  // 2 minutes
 
 const wordTime = (word) => (
   187.7 + 90 * word.length
 );
 
 const parseText = (text) => {
-  return text.split(' ').map((word) => ({
-    word, 
-    time: wordTime(word), 
-  }));
+  return text.replace('\r', '').split('\n\n').map((paragraph) => (
+    paragraph.split('\n').map((line) => (
+      line.split(' ').map((word) => ({
+        word, 
+        time: wordTime(word), 
+      }))
+    ))
+  ));
 };
 
-const parseBlog = ({ title, content }) => {
-  return {
-    title: parseText(title), 
-    content: parseText(content), 
-  }
-};
+const estimateReadTimeForText = (parsed_text) => (
+  parsed_text.reduce((acc, paragraph) => (
+    acc + paragraph.reduce((acc, line) => (
+      acc + line.reduce((acc, word) => (
+        acc + word.time
+      ))
+    ))
+  ))
+);
 
-const estimateReadTime = (blog) => {
-  const parsed = blog.parsed || parseBlog(blog);
-  return parsed.title.reduce((acc, { time }) => (acc + time))
+const estimateReadTime = ({ title, content }) => {
+  return estimateReadTimeForText(parseText(title))
     + 1
-    + parsed.content.reduce((acc, { time }) => (acc + time));
+    + estimateReadTimeForText(parseText(content));
 };
 
 module.exports = {
   MAX_READ_TIME, 
-  parseBlog, 
+  parseText, 
   estimateReadTime, 
+  estimateReadTimeForText, 
 };
