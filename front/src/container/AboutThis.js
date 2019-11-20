@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AboutThis = () => {
   return (
@@ -38,9 +39,11 @@ const AboutThis = () => {
         You shall read the unbiased world, <br />
         one blog at a time. 
       </p>
-      <div className='button blueButton' tabIndex={0}>
-        Start
-      </div>
+      <Link to='/view'>
+        <div className='button blueButton' tabIndex={0}>
+          Start
+        </div>
+      </Link>
     </div>
   );
 };
