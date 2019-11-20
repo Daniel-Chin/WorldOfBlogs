@@ -73,9 +73,10 @@ const LoginPage = ({ whoami, setWhoami }) => {
       <Hat whoami={whoami} />
       <CredentialsCard 
         title='Sign In' fetch_state={fetch_state} 
-        onEnter={onLogin} 
+        onEnter={onLogin} button_class='greenButton'
         onUsernameChange={onUsernameChange}
         onPasswordChange={onPasswordChange}
+        otherwise={{ to: '/register', text: 'Sign up' }}
       />
     </div>
   );

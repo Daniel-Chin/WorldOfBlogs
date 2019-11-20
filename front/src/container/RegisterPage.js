@@ -104,7 +104,8 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
         onUsernameChange={onUsernameChange}
         onPasswordChange={onPasswordChange}
         onUsernameBlur={onUsernameBlur}
-        login_link
+        otherwise={{ to: '/login', text: 'Sign in' }}
+        button_class='blueButton'
       />
     </div>
   );

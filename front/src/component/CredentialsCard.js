@@ -5,8 +5,9 @@ import CheckUsernameCard from './CheckUsernameCard';
 import { enterMeansClick } from '../helper/misc';
 
 const CredentialsCard = ({ 
-  title, fetch_state, onEnter, available, login_link, 
+  title, fetch_state, onEnter, available, otherwise, 
   onUsernameChange, onPasswordChange, onUsernameBlur,
+  button_class, 
 }) => {
   return (
     <div className='credentialsCard centerAlign'>
@@ -40,7 +41,7 @@ const CredentialsCard = ({
       </InputGroup>
       {fetch_state === 'none' ? 
         <div 
-          className='button greenButton mt-3' tabIndex={0}
+          className={'button mt-3 ' + button_class} tabIndex={0}
           onClick={onEnter} onKeyUp={enterMeansClick(onEnter)}
         >
           {title}
@@ -48,14 +49,12 @@ const CredentialsCard = ({
       :
         'Loading...'
       }
-      {login_link &&
-        <p className='mb-0'>
-          Otherwise,{' '}
-          <Link to='/login'>
-            Sign in
-          </Link>
-        </p>
-      }
+      <p className='mb-0'>
+        Otherwise,{' '}
+        <Link to={otherwise.to}>
+          {otherwise.text}
+        </Link>
+      </p>
     </div>
   );
 };
