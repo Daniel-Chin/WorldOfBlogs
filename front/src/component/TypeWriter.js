@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const TypeWriter = ({ parsed, onEnd }) => {
+const TypeWriter = ({ parsed, onEnd, access_time }) => {
   const [n_paragraph, setN_paragraph] = useState(1);
   const [n_line, setN_line] = useState(1);
   const [n_word, setN_word] = useState(1);
   const [finished, setFinished] = useState(false);
+  const [fast_forward, setFast_forward] = useState(Date.now() - access_time);
 
   useEffect(() => {
     if (finished) return;
+    let { time } = parsed[n_paragraph - 1][n_line - 1][n_word - 1];
+    if (fast_forward > 0) {
+      setFast_forward(fast_forward - time + 1);
+      time = 1;
+    }
     const timeout = setTimeout(() => {
       if (n_word === parsed[n_paragraph - 1][n_line - 1].length) {
         if (n_line === parsed[n_paragraph - 1].length) {
@@ -26,12 +32,13 @@ const TypeWriter = ({ parsed, onEnd }) => {
       } else {
         setN_word(n_word + 1);
       }
-    }, parsed[n_paragraph - 1][n_line - 1][n_word - 1].time);
+    }, time);
     return () => {clearTimeout(timeout);};
   }, [
     n_paragraph, n_line, n_word, 
     setN_paragraph, setN_line, setN_word, 
     onEnd, parsed, finished, setFinished,
+    fast_forward, setFast_forward, 
   ]);
 
   if (parsed === null) {

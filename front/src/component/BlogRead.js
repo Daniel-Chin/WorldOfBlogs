@@ -8,7 +8,7 @@ import { parseText, estimateReadTimeForText } from '../helper/blogUtils';
 const BlogRead = ({ blog, setPage }) => {
   const {
     title, content, likes, hates, owner, 
-    last_modified, 
+    last_modified, access_time, 
   } = blog;
   const [stage, setStage] = useState(0);
   const [title_time, setTitle_time] = useState(null);
@@ -63,7 +63,10 @@ const BlogRead = ({ blog, setPage }) => {
         </FloatIn>
       </div>
       {stage >= 3 &&
-        <TypeWriter parsed={parsed_content} onEnd={nextStage} />
+        <TypeWriter 
+          parsed={parsed_content} onEnd={nextStage} 
+          access_time={access_time}
+        />
       }
       <FloatIn show={stage >= 4} onEnd={nextStage}>
         <div className='centerAlign'>
