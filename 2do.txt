@@ -1,8 +1,12 @@
 tooltips
+  You may not change your opinion
+  You may not see their blogs, only the count
 ask discard if blog empty
 
 to test:
   resume read
+  tab flow in EditPage
+  text rolling speed
 
 // Blog preview, reuse component.
 // User can change css!
