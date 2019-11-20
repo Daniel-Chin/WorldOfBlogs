@@ -44,7 +44,11 @@ apiRouter.get('/view', authMidware, async (req, res) => {
         return;
       }
       blog_id = Math.floor(Math.random() * (max_id + 1)).toString();
-      if (history_blogs.includes(blog_id)) {
+      if (
+        (tries < REJECTION_MAX_TRY / 2) 
+      && 
+        history_blogs.includes(blog_id)
+      ) {
         continue;
       }
       blog = await getDb(BLOGS, blog_id);
