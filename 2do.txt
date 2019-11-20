@@ -1,14 +1,7 @@
-quesions {
-    set cookie doesn't work??
-}
-
-bcrypt password len < 72 chars
-username, pw no special char
-word limit
-like and hate: just shows, not affect the suggestion. 
-No like list
-
-Remember me: not optional. there is always cookie
+tooltips
+resume read
+purge blog from opinions
+BlogRead link to owner
 
 // Blog preview, reuse component.
 // User can change css!
