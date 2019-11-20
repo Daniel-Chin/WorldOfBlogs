@@ -1,7 +1,8 @@
 tooltips
-resume read
-purge blog from opinions
 BlogRead link to owner
+
+to test:
+  resume read
 
 // Blog preview, reuse component.
 // User can change css!

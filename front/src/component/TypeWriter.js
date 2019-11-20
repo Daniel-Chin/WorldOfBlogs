@@ -5,16 +5,24 @@ const TypeWriter = ({ parsed, onEnd, access_time }) => {
   const [n_line, setN_line] = useState(1);
   const [n_word, setN_word] = useState(1);
   const [finished, setFinished] = useState(false);
-  const [fast_forward, setFast_forward] = useState(Date.now() - access_time);
+  const [fast_forward, setFast_forward] = useState(
+    function () {
+      const time_delta = Date.now() - access_time;
+      if (time_delta < 7000) {
+        return 0
+      }
+      return time_delta;
+    }()
+  );
 
   useEffect(() => {
-    if (finished) return;
+    if (finished || parsed === null) return;
     let { time } = parsed[n_paragraph - 1][n_line - 1][n_word - 1];
     if (fast_forward > 0) {
-      setFast_forward(fast_forward - time + 1);
       time = 1;
     }
     const timeout = setTimeout(() => {
+      setFast_forward(fast_forward - time + 1);
       if (n_word === parsed[n_paragraph - 1][n_line - 1].length) {
         if (n_line === parsed[n_paragraph - 1].length) {
           if (n_paragraph === parsed.length) {

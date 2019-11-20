@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import FloatIn from './FloatIn';
 import TypeWriter from './TypeWriter';
 import { formatTime, enterMeansClick } from '../helper/misc';
 import { parseText, estimateReadTimeForText } from '../helper/blogUtils';
+
+const SKIP_ANIM_THRESHOLD = 5000; 
+// If the user returned to this page and see the same blog, 
+// Skip the opening animation
 
 const BlogRead = ({ blog, setPage }) => {
   const {
@@ -30,10 +35,15 @@ const BlogRead = ({ blog, setPage }) => {
     }
   }, [parsed_content, setParsed_content, content, title_time]);
 
-  const nextStage = function () {
-    setStage(stage + 1);
-  };
+  useEffect(() => {
+    if (stage < 3 && access_time < Date.now() - SKIP_ANIM_THRESHOLD) {
+      setStage(3);
+    }
+  }, [stage, access_time, setStage]);
 
+  const updateStage = function () {
+    setStage(Math.max(stage, this));
+  }
   const nextPage = function () {
     setPage('rate');
   };
@@ -41,19 +51,22 @@ const BlogRead = ({ blog, setPage }) => {
   return (
     <div className='BlogRead'>
       <div className='centerAlign'>
-        <FloatIn show={stage >= 0} onEnd={nextStage}>
+        <FloatIn show={stage >= 0} onEnd={updateStage.bind(1)}>
           <h1>{title}</h1>
         </FloatIn>
-        <FloatIn show={stage >= 1} onEnd={nextStage} wait={title_time * 2}>
+        <FloatIn 
+          show={stage >= 1} onEnd={updateStage.bind(2)} 
+          wait={title_time * 2}
+        >
           <span className='smallGray'>written by</span>{' '}
-          <span>{owner}</span>{' '}
+          <Link to={'/user/' + owner}>{owner}</Link>{' '}
           {useMediaQuery({ query: '(max-device-width: 500px)' }) &&
             <br />
           }
           <span className='smallGray'>at</span>{' '}
           <span>{formatTime(last_modified)}</span>
         </FloatIn>
-        <FloatIn show={stage >= 2} onEnd={nextStage}>
+        <FloatIn show={stage >= 2} onEnd={updateStage.bind(3)}>
           <span className='likes mr-3'>
             {`Likes: ${likes.toLocaleString()}`}
           </span>
@@ -64,11 +77,11 @@ const BlogRead = ({ blog, setPage }) => {
       </div>
       {stage >= 3 &&
         <TypeWriter 
-          parsed={parsed_content} onEnd={nextStage} 
+          parsed={parsed_content} onEnd={updateStage.bind(4)} 
           access_time={access_time}
         />
       }
-      <FloatIn show={stage >= 4} onEnd={nextStage}>
+      <FloatIn show={stage >= 4}>
         <div className='centerAlign'>
           <div
             className='button blueButton' tabIndex={0}
