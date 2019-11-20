@@ -8,6 +8,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 
 ## Issues
 * Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console) Expect to see some red when you open the console.  
+* React memory leak: if axios response arrives after a component unmounts, the handler attempts to set states of the non-existent component, which results in a warning message on console. Future work: use [axios-cancel](https://www.npmjs.com/package/axios-cancel) to in `useEffect` cleanup callback.  
 
 ## Data Structure
 ### User
