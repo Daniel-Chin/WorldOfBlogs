@@ -64,6 +64,7 @@ Gives a random blog. Prioritize those that the user has not viewed.
 Request: GET, cookie  
 Response: `{ title, content, likes, hates, owner, last_modified, my_opinion, access_time }`  
 If rejection sampling failed, response is `false`.  
+If last blog has not been rated or expired, we do not sample for a new blog.  
 
 ### user/checkUsername
 Request: GET, ? username  

@@ -32,8 +32,12 @@ apiRouter.get('/view', authMidware, async (req, res) => {
   const history_blogs = history.map((x) => (x.blog));
   let blog;
   let access_time;
-  if (last_view && last_view.expire > Date.now()) {
-    // Last view not expired yet
+  if (
+    last_view && last_view.expire > Date.now()
+    ||
+    req.user.opinions[last_view.blog] === undefined
+  ) {
+    // Last view not expired yet || did not rate yet
     blog = await getDb(BLOGS, last_view.blog);
     access_time = last_view.access_time;
   } else {
