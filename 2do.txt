@@ -1,5 +1,4 @@
 tooltips
-BlogRead link to owner
 
 to test:
   resume read

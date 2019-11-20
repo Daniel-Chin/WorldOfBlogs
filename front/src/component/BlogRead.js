@@ -13,7 +13,7 @@ const SKIP_ANIM_THRESHOLD = 5000;
 const BlogRead = ({ blog, setPage }) => {
   const {
     title, content, likes, hates, owner, 
-    last_modified, access_time, 
+    last_modified, access_time, my_opinion, 
   } = blog;
   const [stage, setStage] = useState(0);
   const [title_time, setTitle_time] = useState(null);
@@ -44,8 +44,12 @@ const BlogRead = ({ blog, setPage }) => {
   const updateStage = function () {
     setStage(Math.max(stage, this));
   }
-  const nextPage = function () {
-    setPage('rate');
+  const finish = function () {
+    if (my_opinion) {
+      setPage('end')
+    } else {
+      setPage('rate');
+    }
   };
 
   return (
@@ -85,7 +89,7 @@ const BlogRead = ({ blog, setPage }) => {
         <div className='centerAlign'>
           <div
             className='button blueButton' tabIndex={0}
-            onClick={nextPage} onKeyUp={enterMeansClick(nextPage)}
+            onClick={finish} onKeyUp={enterMeansClick(finish)}
           >
             Finish
           </div>
