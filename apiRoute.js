@@ -29,7 +29,7 @@ apiRouter.use('/user', userRouter);
 apiRouter.get('/view', authMidware, async (req, res) => {
   const history = req.user.history;
   const last_view = history[history.length - 1];
-  const history_blogs = history.map((x) => {x.blog});
+  const history_blogs = history.map((x) => (x.blog));
   let blog;
   if (last_view && last_view.expire > Date.now()) {
     // Last view not expired yet
