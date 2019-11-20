@@ -4,17 +4,18 @@ import Hat from '../component/Hat';
 import BlogFlow from '../component/BlogFlow';
 import { GET } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
+import FloatIn from '../component/FloatIn';
 
 const ViewPage = ({ whoami, unAuth }) => {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    if (blog === null) {
+    if (whoami && blog === null) {
       GET('view', {}, unAuth).then((res) => {
         setBlog(res);
       });
     }
-  }, [blog, setBlog, unAuth]);
+  }, [blog, setBlog, unAuth, whoami]);
 
   const reset = function () {
     setBlog(null);
@@ -24,14 +25,16 @@ const ViewPage = ({ whoami, unAuth }) => {
     return (
       <div className='centerAlign'>
         <Hat whoami={whoami} />
-        <p className='mt-5'>
-          It is very important that you 
-        </p>
-        <Link to='/register'>
-          <div className='button blueButton'>
-            Sign Up First
-          </div>
-        </Link>
+        <FloatIn show>
+          <p className='mt-5'>
+            It is very important that you 
+          </p>
+          <Link to='/register'>
+            <div className='button blueButton'>
+              Sign Up First
+            </div>
+          </Link>
+        </FloatIn>
       </div>
     );
   }
