@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const enterMeansClick = (onClick, accept_space) => (
   (event) => {
       accept_space = accept_space === undefined ? true : accept_space;
@@ -10,6 +12,11 @@ const enterMeansClick = (onClick, accept_space) => (
   }
 );
 
+const formatTime = (time) => (
+  moment().format('MMM Do YYYY, h a')
+);
+
 export {
   enterMeansClick, 
+  formatTime, 
 };
