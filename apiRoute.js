@@ -29,6 +29,7 @@ apiRouter.use('/user', userRouter);
 apiRouter.get('/view', authMidware, async (req, res) => {
   const history = req.user.history;
   const last_view = history[history.length - 1];
+  const history_blogs = history.map((x) => {x.blog});
   let blog;
   if (last_view && last_view.expire > Date.now()) {
     // Last view not expired yet
@@ -36,14 +37,17 @@ apiRouter.get('/view', authMidware, async (req, res) => {
   } else {
     const max_id = (await getDb('max_id', 'value')).value;
     let tries = 0;
+    let blog_id;
     while (! blog) {
       if (tries ++ >= REJECTION_MAX_TRY) {
         res.json(false);
         return;
       }
-      blog = await getDb(BLOGS, 
-        Math.floor(Math.random() * (max_id + 1)).toString()
-      );
+      blog_id = Math.floor(Math.random() * (max_id + 1)).toString();
+      if (history_blogs.includes(blog_id)) {
+        continue;
+      }
+      blog = await getDb(BLOGS, blog_id);
     }
     // update user.history
     setDb(USERS, req.user.name, {

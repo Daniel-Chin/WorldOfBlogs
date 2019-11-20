@@ -57,7 +57,7 @@ All methods require user auth, except `user/register`, `user/checkUsername`, and
 If auth fails, HTTP 403 and clear cookie.  
 
 ### view
-Gives a random blog that the user has not viewed.  
+Gives a random blog. Prioritize those that the user has not viewed.  
 (Rejection sampling, max try = 32)  
 Request: GET, cookie  
 Response: `{ title, content, likes, hates, owner, last_modified, my_opinion }`  
