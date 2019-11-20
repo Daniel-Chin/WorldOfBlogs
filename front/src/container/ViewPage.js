@@ -5,6 +5,7 @@ import BlogFlow from '../component/BlogFlow';
 import { GET } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
 import FloatIn from '../component/FloatIn';
+import MobilePad from '../component/MobilePad';
 
 const ViewPage = ({ whoami, unAuth }) => {
   const [blog, setBlog] = useState(null);
@@ -25,6 +26,7 @@ const ViewPage = ({ whoami, unAuth }) => {
     return (
       <div className='centerAlign'>
         <Hat whoami={whoami} />
+        <MobilePad />
         <FloatIn show>
           <p className='mt-5'>
             It is very important that you 
@@ -67,7 +69,7 @@ const ViewPage = ({ whoami, unAuth }) => {
   return (
     <div>
       <Hat whoami={whoami} />
-      <BlogFlow blog={blog} />
+      <BlogFlow blog={blog} reset={reset} />
     </div>
   );
 };
