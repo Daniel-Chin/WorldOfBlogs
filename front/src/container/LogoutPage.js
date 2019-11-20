@@ -25,32 +25,33 @@ const LogoutPage = ({ whoami, setWhoami, unAuth }) => {
   };
 
   if (! whoami) {
-    return <Redirect to='/' />
+    return <Redirect to='/view' />
   }
 
   return (
     <div className='centerAlign'>
       <Hat whoami={whoami} />
       <FloatIn show={stage >= 0} onEnd={nextStage}>
-      <h2 className='mt-3'>Signing Out</h2>
+        <h2 className='mt-3'>Signing Out</h2>
       </FloatIn>
       <FloatIn show={stage >= 1} onEnd={nextStage}>
-      <p>
-        Pop quiz: <i>do you still remember your password? </i> 
-      </p>
+        <p>
+          Pop quiz: <i>do you still remember your password? </i> 
+        </p>
       </FloatIn>
       <FloatIn show={stage >= 2} onEnd={nextStage} wait={WAIT_TIME}>
-      <p className='underlink' tabIndex={0} 
-        onClick={forgotPassword} onKeyUp={enterMeansClick(forgotPassword)}
-      >
-        Damn. I forgot my password...
-      </p>
-      <div 
-        className='button redButton' tabIndex={1}
-        onClick={logout} onKeyUp={enterMeansClick(logout)}
-      >
-        Confirm Sign Out
-      </div>
+        <p className='underlink' tabIndex={0} 
+          onClick={forgotPassword} onKeyUp={enterMeansClick(forgotPassword)}
+        >
+          Damn. I forgot my password...
+        </p>
+        <br />
+        <div 
+          className='button redButton' tabIndex={0}
+          onClick={logout} onKeyUp={enterMeansClick(logout)}
+        >
+          Confirm Sign Out
+        </div>
       </FloatIn>
     </div>
   );
