@@ -62,7 +62,6 @@ Gives a random blog. Prioritize those that the user has not viewed.
 (Rejection sampling, max try = 32)  
 Request: GET, cookie  
 Response: `{ title, content, likes, hates, owner, last_modified, my_opinion }`  
-If last view has not expired, response is `false`.  
 If rejection sampling failed, response is `false`.  
 
 ### user/checkUsername
