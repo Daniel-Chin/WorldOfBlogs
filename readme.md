@@ -28,6 +28,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
     {
       blog: 'blog id', 
       expire: 1573664371547, 
+      access_time: 1573664370547,
     } // 'deleted' if blog is deleted.  
   ],  // should have used Firestore subcollections...
   opinions: {
@@ -61,7 +62,7 @@ If auth fails, HTTP 403 and clear cookie.
 Gives a random blog. Prioritize those that the user has not viewed.  
 (Rejection sampling, max try = 32)  
 Request: GET, cookie  
-Response: `{ title, content, likes, hates, owner, last_modified, my_opinion }`  
+Response: `{ title, content, likes, hates, owner, last_modified, my_opinion, access_time }`  
 If rejection sampling failed, response is `false`.  
 
 ### user/checkUsername

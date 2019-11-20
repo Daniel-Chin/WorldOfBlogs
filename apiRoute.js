@@ -31,9 +31,11 @@ apiRouter.get('/view', authMidware, async (req, res) => {
   const last_view = history[history.length - 1];
   const history_blogs = history.map((x) => (x.blog));
   let blog;
+  let access_time;
   if (last_view && last_view.expire > Date.now()) {
     // Last view not expired yet
     blog = await getDb(BLOGS, last_view.blog);
+    access_time = last_view.access_time;
   } else {
     const max_id = (await getDb('max_id', 'value')).value;
     let tries = 0;
@@ -53,6 +55,7 @@ apiRouter.get('/view', authMidware, async (req, res) => {
       }
       blog = await getDb(BLOGS, blog_id);
     }
+    access_time = Date.now();
     // update user.history
     setDb(USERS, req.user.name, {
       ...req.user, 
@@ -60,12 +63,16 @@ apiRouter.get('/view', authMidware, async (req, res) => {
         ...history, 
         {
           blog: blog.id, 
-          expire: Date.now() + blog.read_time, 
+          access_time, 
+          expire: access_time + blog.read_time, 
         }, 
       ], 
     });
   }
-  res.json(blogAddOpinionDelId(blog, req.user));
+  res.json({
+    ...blogAddOpinionDelId(blog, req.user), 
+    access_time, 
+  });
 });
 
 apiRouter.get('/rate', authMidware, (req, res) => {
