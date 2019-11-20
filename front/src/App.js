@@ -25,11 +25,11 @@ const App = () => {
   useEffect(() => {
     if (! did_try_login) {
       setDid_try_login(true);
-      GET('user/whoami', {}, () => {}).then((res) => {
+      GET('user/whoami', {}, 'do not unAuth').then((res) => {
         if (res) {
           setWhoami(res);
         }
-      }).catch((_) => {});
+      });
     }
   }, [did_try_login, setWhoami, setDid_try_login]);
 
@@ -65,7 +65,9 @@ const App = () => {
       <Route exact path='/logout'>
         <LogoutPage whoami={whoami} setWhoami={setWhoami} unAuth={unAuth} />
       </Route>
-      <Route exact path='/view' render={ViewPage} />
+      <Route exact path='/view'>
+        <ViewPage whoami={whoami} />
+      </Route>
       <Route exact path='/dashboard' render={DashboardPage} />
       <Route exact path='/user/:username' render={UserPage} />
       <Route exact path='/history/:index' render={HistoryPage} />
