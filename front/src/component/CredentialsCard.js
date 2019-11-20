@@ -47,7 +47,9 @@ const CredentialsCard = ({
           {title}
         </div>
       :
-        'Loading...'
+        <p className='mt-3'>
+          Loading...
+        </p>
       }
       <p className='mb-0'>
         Otherwise,{' '}
