@@ -6,6 +6,9 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 * Passwords are hashed and salted using [bcrypt](https://www.npmjs.com/package/bcrypt)  
 * Registration race condition solved by [Firebase Transaction](https://firebase.google.com/docs/firestore/manage-data/transactions).  
 
+## Issues
+* Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console) Expect to see some red when you open the console.  
+
 ## Data Structure
 ### User
 ```js
