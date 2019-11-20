@@ -53,7 +53,9 @@ const App = () => {
 
   return (
     <Switch>
-      <Route exact path='/' render={AboutThis} />
+      <Route exact path='/'>
+        <AboutThis />
+      </Route>
       <Route exact path='/register'>
         <RegisterPage 
           whoami={whoami} unAuth={unAuth} setWhoami={setWhoami}

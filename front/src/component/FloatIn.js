@@ -34,7 +34,7 @@ const FloatIn = ({ show, onEnd, wait, children }) => {
     if (stage === 'animating') {
       const timeout = setTimeout(() => {
         setStage('ended');
-        onEnd();
+        onEnd && onEnd();
       }, TRANSITION * 1000 + WAIT_END);
       return () => {
         clearTimeout(timeout);

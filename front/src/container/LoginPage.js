@@ -5,6 +5,7 @@ import Hat from '../component/Hat';
 import CredentialsCard from '../component/CredentialsCard';
 import { login } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
+import FloatIn from '../component/FloatIn';
 
 const LoginPage = ({ whoami, setWhoami }) => {
   const [username, setUsername] = useState('');
@@ -71,13 +72,15 @@ const LoginPage = ({ whoami, setWhoami }) => {
         </div>
       </Modal>
       <Hat whoami={whoami} />
-      <CredentialsCard 
-        title='Sign In' fetch_state={fetch_state} 
-        onEnter={onLogin} button_class='greenButton'
-        onUsernameChange={onUsernameChange}
-        onPasswordChange={onPasswordChange}
-        otherwise={{ to: '/register', text: 'Sign up' }}
-      />
+      <FloatIn show>
+        <CredentialsCard 
+          title='Sign In' fetch_state={fetch_state} 
+          onEnter={onLogin} button_class='greenButton'
+          onUsernameChange={onUsernameChange}
+          onPasswordChange={onPasswordChange}
+          otherwise={{ to: '/register', text: 'Sign up' }}
+        />
+      </FloatIn>
     </div>
   );
 };

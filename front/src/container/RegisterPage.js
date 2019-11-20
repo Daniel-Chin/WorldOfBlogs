@@ -5,6 +5,7 @@ import Hat from '../component/Hat';
 import CredentialsCard from '../component/CredentialsCard';
 import { GET, login } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
+import FloatIn from '../component/FloatIn';
 
 const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
   const [username, setUsername] = useState('');
@@ -98,15 +99,17 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
         </div>
       </Modal>
       <Hat whoami={whoami} />
-      <CredentialsCard 
-        title='Sign Up' fetch_state={fetch_state} 
-        onEnter={onRegister} available={available}
-        onUsernameChange={onUsernameChange}
-        onPasswordChange={onPasswordChange}
-        onUsernameBlur={onUsernameBlur}
-        otherwise={{ to: '/login', text: 'Sign in' }}
-        button_class='blueButton'
-      />
+      <FloatIn show>
+        <CredentialsCard 
+          title='Sign Up' fetch_state={fetch_state} 
+          onEnter={onRegister} available={available}
+          onUsernameChange={onUsernameChange}
+          onPasswordChange={onPasswordChange}
+          onUsernameBlur={onUsernameBlur}
+          otherwise={{ to: '/login', text: 'Sign in' }}
+          button_class='blueButton'
+        />
+      </FloatIn>
     </div>
   );
 };
