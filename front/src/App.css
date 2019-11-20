@@ -111,3 +111,28 @@
   cursor: pointer;
   font-size: 70%;
 }
+
+.BlogRead {
+  padding: 10px 20px;
+}
+
+.smallGray {
+  color: #888;
+  font-size: 80%;
+}
+
+.likes {
+  color: #080;
+  font-size: 120%;
+}
+
+.hates {
+  color: #800;
+  font-size: 120%;
+}
+
+.error {
+  background-color: #800;
+  color: white;
+  padding: 10px;
+}
