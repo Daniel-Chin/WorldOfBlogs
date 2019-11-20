@@ -19,7 +19,6 @@ let which = new Promise((resolve, _) => {
 // const which = 'prod';
 
 const API = async (method, url, data, config, unAuth) => {
-  console.log(config);
   try {
     return (await axios({
       method, 
@@ -31,7 +30,10 @@ const API = async (method, url, data, config, unAuth) => {
   } catch (e) {
     if (e.response) {
       if (e.response.status === 401) {
-        unAuth(true);
+        if (unAuth !== 'do not unAuth') {
+          console.warn('Attempted to access restricted API without valid credentials. This is a sign of bug. ');
+          unAuth(true);
+        }
       }
     }
   }
