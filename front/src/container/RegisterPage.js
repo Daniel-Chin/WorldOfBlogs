@@ -6,6 +6,7 @@ import CredentialsCard from '../component/CredentialsCard';
 import { GET, login } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
 import FloatIn from '../component/FloatIn';
+import MobilePad from '../component/MobilePad';
 
 const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
   const [username, setUsername] = useState('');
@@ -86,7 +87,7 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
         contentLabel="Error Modal"
       >
         <h3 className='errorModalHead'>Failed to Sign Up</h3>
-        <div className='errorModalBody'>
+        <div className='pad1020'>
           <p>
             {error_msg}
           </p>
@@ -99,6 +100,7 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
         </div>
       </Modal>
       <Hat whoami={whoami} />
+      <MobilePad />
       <FloatIn show>
         <CredentialsCard 
           title='Sign Up' fetch_state={fetch_state} 

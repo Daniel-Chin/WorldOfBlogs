@@ -49,7 +49,7 @@ const BlogRead = ({ blog, setPage }) => {
   };
 
   return (
-    <div className='BlogRead'>
+    <div className='pad1020'>
       <div className='centerAlign'>
         <FloatIn show={stage >= 0} onEnd={updateStage.bind(1)}>
           <h1>{title}</h1>

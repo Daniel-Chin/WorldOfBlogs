@@ -6,6 +6,7 @@ import CredentialsCard from '../component/CredentialsCard';
 import { login } from '../helper/api';
 import { enterMeansClick } from '../helper/misc';
 import FloatIn from '../component/FloatIn';
+import MobilePad from '../component/MobilePad';
 
 const LoginPage = ({ whoami, setWhoami }) => {
   const [username, setUsername] = useState('');
@@ -59,7 +60,7 @@ const LoginPage = ({ whoami, setWhoami }) => {
         contentLabel="Error Modal"
       >
         <h3 className='errorModalHead'>Failed to Sign In</h3>
-        <div className='errorModalBody'>
+        <div className='pad1020'>
           <p>
             {error_msg}
           </p>
@@ -72,6 +73,7 @@ const LoginPage = ({ whoami, setWhoami }) => {
         </div>
       </Modal>
       <Hat whoami={whoami} />
+      <MobilePad />
       <FloatIn show>
         <CredentialsCard 
           title='Sign In' fetch_state={fetch_state} 

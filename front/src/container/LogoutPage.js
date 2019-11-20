@@ -4,6 +4,7 @@ import Hat from '../component/Hat';
 import FloatIn from '../component/FloatIn';
 import { enterMeansClick } from '../helper/misc';
 import { GET } from '../helper/api';
+import MobilePad from '../component/MobilePad';
 
 const WAIT_TIME = 1000;
 
@@ -31,6 +32,7 @@ const LogoutPage = ({ whoami, setWhoami, unAuth }) => {
   return (
     <div className='centerAlign'>
       <Hat whoami={whoami} />
+      <MobilePad />
       <FloatIn show={stage >= 0} onEnd={nextStage}>
         <h2 className='mt-3'>Signing Out</h2>
       </FloatIn>

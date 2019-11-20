@@ -104,10 +104,6 @@
   margin-block-end: 0;
 }
 
-.errorModalBody {
-  padding: 10px 20px; 
-}
-
 .underlink {
   color: #00f;
   text-decoration: underline;
@@ -121,7 +117,7 @@
   transform: scale(1.4);
 }
 
-.BlogRead {
+.pad1020 {
   padding: 10px 20px;
 }
 
@@ -149,4 +145,12 @@
 .BlogRate {
   text-align: center;
   margin: 20px;
+}
+
+.smaller {
+  transform: scale(.7);
+}
+
+.MobilePad {
+  margin-top: 150px;
 }
