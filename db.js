@@ -97,8 +97,8 @@ const newBlogTransact = async (user) => {
     new_id = new_id.toString();
     t.set(db.collection(BLOGS).doc(new_id), {
       id: new_id, 
-      title: 'dafault', 
-      content: 'default', 
+      title: '', 
+      content: '', 
       likes: 0, hates: 0, 
       owner: user.name, 
       last_modified: Date.now(), 
