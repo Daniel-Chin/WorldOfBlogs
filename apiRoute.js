@@ -18,8 +18,8 @@ apiRouter.use(bodyParser.json());
 
 if (! process.env.PROD) {
   apiRouter.use((req, _, next) => {
-    const { method, url, query, params, cookies } = req;
-    console.log({ method, url, query, params, cookies });
+    const { method, url, query, params, cookies, body } = req;
+    console.log({ method, url, query, params, cookies, body });
     next();
   });
 }
