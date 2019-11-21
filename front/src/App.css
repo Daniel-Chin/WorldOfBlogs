@@ -192,7 +192,7 @@
 .editPageHeader {
   flex: 0 1 auto;
   background-color: #e8e8e8;
-  padding: 5px 20px;
+  padding: 3px 20px;
   width: 100%;
 }
 
@@ -200,4 +200,9 @@
   height: 100%;
   display: flex;
   flex-flow: column;
+}
+
+.smallButton {
+  font-size: 70%;
+  padding: 2px 10px;
 }

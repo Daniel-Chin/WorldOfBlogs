@@ -1,7 +1,9 @@
 tooltips
   You may not change your opinion
   You may not see their blogs, only the count
-ask discard if blog empty
+ask delete if blog empty
+realtime read_time check
+edit button while viewing mine?
 
 to test:
   resume read
