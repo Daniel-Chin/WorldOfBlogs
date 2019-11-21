@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import EditPageHeader from '../component/EditPageHeader';
+import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import EditPageHeader from '../component/EditPageHeader';
 import { enterMeansClick } from '../helper/misc';
 
 const SAVE_SHOW_MENU_TIME = 2000;
@@ -82,9 +83,38 @@ const EditPage = () => {
       }, 500);
     }
   };
-  
+
+  const closeModal = function () {
+    setError_msg(null);
+  };
+
   return (
     <div className='EditPage' onKeyDown={onKeyDown}>
+      <Modal
+        isOpen={error_msg !== null}
+        onRequestClose={closeModal}
+        style={{
+          content: {
+            padding: 0, 
+            borderRadius: '10px',
+            textAlign: 'center',
+          }, 
+        }}
+        contentLabel="Error Modal"
+      >
+        <h3 className='errorModalHead'>Failed to Save</h3>
+        <div className='pad1020'>
+          <p>
+            {error_msg}
+          </p>
+          <div 
+            className='button grayButton' tabIndex={0}
+            onClick={closeModal} onKeyUp={enterMeansClick(closeModal)}
+          >
+            OK
+          </div>
+        </div>
+      </Modal>
       <div className='editPageHeader' style={{
         transition: HEADER_TRANSITION, 
         transform: `translate(0, ${menu_visible ? 0 : '-100%'})`, 
