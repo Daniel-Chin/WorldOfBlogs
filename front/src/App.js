@@ -75,7 +75,7 @@ const App = () => {
       <Route exact path='/history/:index' render={HistoryPage} />
       <Route exact path='/mine/:index' render={MinePage} />
       <Route exact path='/edit/:mine_index'>
-        <EditPage />
+        <EditPage unAuth={unAuth} />
       </Route>
       <Route exact path='/new'>
         <NewPage unAuth={unAuth} />

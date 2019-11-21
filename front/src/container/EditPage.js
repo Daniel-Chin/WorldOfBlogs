@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import EditPageHeader from '../component/EditPageHeader';
 import { enterMeansClick } from '../helper/misc';
+import { POST } from '../helper/api';
 
 const SAVE_SHOW_MENU_TIME = 2000;
 const HEADER_TRANSITION = '.5s';
 const HEADER_HEIGHT = '40px';
 
-const EditPage = () => {
+const EditPage = ({ unAuth }) => {
+  const mine_index = useParams().mine_index;
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [menu_visible, setMenu_visible] = useState(true);
@@ -73,14 +77,18 @@ const EditPage = () => {
       if (show_menu) {
         setMenu_visible(true);
       }
-      setTimeout(() => {
-        setResponse({is_ok:true});
+      POST('editBlog', {
+        title, 
+        content, 
+        mine_index,
+      }, unAuth).then((res) => {
+        setResponse(res);
         if (show_menu) {
           setTimeout(() => {
             setMenu_visible(false);
           }, SAVE_SHOW_MENU_TIME);
         }
-      }, 500);
+      });
     }
   };
 
@@ -121,7 +129,10 @@ const EditPage = () => {
         position: 'absolute',
         height: HEADER_HEIGHT, 
       }}>
-        <EditPageHeader save_stage={save_stage} save={save} />
+        <EditPageHeader 
+          save_stage={save_stage} save={save} 
+          mine_index={mine_index}
+        />
       </div>
       <div className='titleRow' style={{
         transition: HEADER_TRANSITION, 

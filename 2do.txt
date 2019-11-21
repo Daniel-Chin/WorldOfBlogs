@@ -4,6 +4,7 @@ tooltips
 ask delete if blog empty
 realtime read_time check
 edit button while viewing mine?
+download content when starting editing
 
 to test:
   resume read
