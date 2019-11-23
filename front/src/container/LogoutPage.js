@@ -26,7 +26,7 @@ const LogoutPage = ({ whoami, setWhoami, unAuth }) => {
   };
 
   if (! whoami) {
-    return <Redirect to='/view' />
+    return <Redirect to='/' />
   }
 
   return (
