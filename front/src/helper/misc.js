@@ -13,7 +13,7 @@ const enterMeansClick = (onClick, accept_space) => (
 );
 
 const formatTime = (time) => (
-  moment().format('MMM Do YYYY, h a')
+  moment(time).format('MMM Do YYYY, h a')
 );
 
 const is_mobile = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
