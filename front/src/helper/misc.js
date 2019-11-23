@@ -18,8 +18,17 @@ const formatTime = (time) => (
 
 const is_mobile = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
 
+const sleep = (time) => {
+  return new Promise((resolve) => {
+    setTimeout(()  => {
+      resolve();
+    }, time);
+  });
+};  // For testing purposes
+
 export {
   enterMeansClick, 
   formatTime, 
-  is_mobile
+  is_mobile, 
+  sleep, 
 };
