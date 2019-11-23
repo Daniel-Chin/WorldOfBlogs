@@ -194,6 +194,7 @@ apiRouter.post('/editBlog', authMidware, async (req, res) => {
     title, 
     content, 
     read_time, 
+    last_modified: Date.now(), 
   });
   res.json({
     is_ok: true, 
