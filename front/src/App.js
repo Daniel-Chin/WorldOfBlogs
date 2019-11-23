@@ -54,7 +54,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path='/'>
-        <AboutThis />
+        <AboutThis whoami={whoami} />
       </Route>
       <Route exact path='/register'>
         <RegisterPage 

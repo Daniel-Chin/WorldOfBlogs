@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FloatIn from '../component/FloatIn';
+import Hat from '../component/Hat';
 
 const WAIT_TIME = 1000;
 
-const AboutThis = () => {
+const AboutThis = ({ whoami }) => {
   const [stage, setStage] = useState(0);
 
   const nextStage = function () {
@@ -15,6 +16,9 @@ const AboutThis = () => {
     <div className='centerAlign' style={{
       marginBottom: '30px',
     }}>
+      {whoami &&
+        <Hat whoami={whoami} />
+      }
       <FloatIn show={stage >= 0} onEnd={nextStage}>
         <h1 className='mt-3'>World of Blogs</h1>
       </FloatIn>
