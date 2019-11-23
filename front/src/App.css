@@ -192,7 +192,7 @@
 .editPageHeader {
   flex: 0 1 auto;
   background-color: #e8e8e8;
-  padding: 3px 20px;
+  padding: 3px 10px 0 20px;
   width: 100%;
 }
 
@@ -207,7 +207,28 @@
   padding: 2px 10px;
 }
 
-.EditPageHeaderLeft{
-  display: flex;
-  flex-flow: row;
+.EditPageHeaderLeft {
+  display: inline-block;
+}
+
+.ReadTimeHUD {
+  margin-top: 2px;
+}
+
+.tiptool {
+  user-select: none;
+  color: rgba(0, 0, 0, .5);
+}
+
+.tooltip {
+  font-size: 18px;
+  padding: 3px 15px;
+  border-radius: 5px;
+}
+.tooltipRed {
+  background-color: #800 !important;
+}
+
+.red {
+  color: #800;
 }

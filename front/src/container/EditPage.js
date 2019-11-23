@@ -47,16 +47,17 @@ const EditPage = ({ unAuth }) => {
 
   const onTitleChange = (event) => {
     setTitle(event.target.value);
-    if (save_stage !== 'unsaved') {
-      setSave_stage('unsaved');
-    }
-  }
+    onChange();
+  };
   const onContentChange = (event) => {
     setContent(event.target.value);
+    onChange();
+  };
+  const onChange = function () {
     if (save_stage !== 'unsaved') {
       setSave_stage('unsaved');
     }
-  }
+  };
   const onKeyDown = (event) => {
     if (event.ctrlKey || event.metaKey) {
       if (event.key.toLowerCase() === 's') {
@@ -131,7 +132,8 @@ const EditPage = ({ unAuth }) => {
       }}>
         <EditPageHeader 
           save_stage={save_stage} save={save} 
-          mine_index={mine_index}
+          mine_index={mine_index} title={title} 
+          content={content} setMenu_visible={setMenu_visible}
         />
       </div>
       <div className='titleRow' style={{
