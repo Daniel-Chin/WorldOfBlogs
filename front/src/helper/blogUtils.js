@@ -20,12 +20,13 @@ const estimateReadTimeForText = (parsed_text) => (
     acc + paragraph.reduce((acc, line) => (
       acc + line.reduce((acc, word) => (
         acc + word.time
-      ))
-    ))
-  ))
+      ), 0)
+    ), 0)
+  ), 0)
 );
 
 const estimateReadTime = ({ title, content }) => {
+  // console.log(estimateReadTimeForText(parseText(content)));
   return estimateReadTimeForText(parseText(title))
     + 1
     + estimateReadTimeForText(parseText(content));
