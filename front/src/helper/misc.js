@@ -16,7 +16,10 @@ const formatTime = (time) => (
   moment().format('MMM Do YYYY, h a')
 );
 
+const is_mobile = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
+
 export {
   enterMeansClick, 
   formatTime, 
+  is_mobile
 };

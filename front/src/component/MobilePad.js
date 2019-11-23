@@ -3,9 +3,10 @@
 // are easier to reach for mobile users. 
 
 import React from 'react';
+import { is_mobile } from '../helper/misc';
 
 const MobilePad = () => {
-  if('ontouchstart' in window || navigator.msMaxTouchPoints > 0) {
+  if(is_mobile) {
     return (
       <div className='MobilePad'>
 
