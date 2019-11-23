@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import EditPageHeader from '../component/EditPageHeader';
+import MobilePad from '../component/MobilePad';
 import { enterMeansClick } from '../helper/misc';
-import { POST } from '../helper/api';
+import { GET, POST } from '../helper/api';
+import FloatIn from '../component/FloatIn';
 
 const SAVE_SHOW_MENU_TIME = 2000;
 const HEADER_TRANSITION = '.5s';
@@ -14,12 +16,23 @@ const HEADER_HEIGHT = '40px';
 const EditPage = ({ unAuth }) => {
   const mine_index = useParams().mine_index;
 
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState(null);
+  const [content, setContent] = useState(null);
   const [menu_visible, setMenu_visible] = useState(true);
   const [save_stage, setSave_stage] = useState('saved');
   const [response, setResponse] = useState(null);
   const [error_msg, setError_msg] = useState(null);
+
+  useEffect(() => {
+    if (title === null) {
+      GET('getMine', { params: {
+        mine_index, 
+      } }, unAuth).then((res) => {
+        setTitle(res.title);
+        setContent(res.content);
+      });
+    }
+  }, [title, setTitle, setContent, unAuth, mine_index]);
 
   useEffect(() => {
     if (response !== null) {
@@ -96,6 +109,17 @@ const EditPage = ({ unAuth }) => {
   const closeModal = function () {
     setError_msg(null);
   };
+
+  if (title === null || content === null) {
+    return (
+      <div className='mt-5 centerAlign'>
+        <MobilePad />
+        <FloatIn show>
+          Downloading your blog...
+        </FloatIn>
+      </div>
+    );
+  }
 
   return (
     <div className='EditPage' onKeyDown={onKeyDown}>
