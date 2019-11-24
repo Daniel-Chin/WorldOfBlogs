@@ -267,11 +267,11 @@ h3 {
   overflow: auto;
 }
 .BlogEntryLeft {
-  width: 55%;
+  width: 65%;
 }
 .BlogEntryMiddle {
-  width: 10%;
+  width: 5%;
 }
 .BlogEntryRight {
-  width: 35%;
+  width: 30%;
 }
