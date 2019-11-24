@@ -145,7 +145,7 @@ const purgeBlog = async (blog_id) => {
         delete user.opinions[blog_id];
       }
       if (modified) {
-        t.set(USERS.doc(doc.id), user);
+        t.set(usersRef.doc(doc.id), user);
       }
     });
     t.delete(db.collection(BLOGS).doc(blog_id));
@@ -154,7 +154,7 @@ const purgeBlog = async (blog_id) => {
 };
 
 module.exports = {
-  USERS, BLOGS, 
+  USERS, BLOGS, DELETED, 
   getDb, 
   setDb, 
   getAllBlogs,
