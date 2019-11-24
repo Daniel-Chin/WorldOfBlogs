@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 import FloatIn from './FloatIn';
 import TypeWriter from './TypeWriter';
 import { formatTime, enterMeansClick } from '../helper/misc';
@@ -70,9 +72,9 @@ const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
           <span className='smallGray'>at</span>{' '}
           <span>{formatTime(last_modified)}</span>
           {editButton &&
-            <Link to={`/edit/${mine_index}`}>
-              <span className='button smallButton grayButton ml-2'>
-                Edit
+            <Link className='ml-2' to={`/edit/${mine_index}`}>
+              <span className='button smallButton greenButton'>
+                <FontAwesomeIcon icon={faPen} className='faBigger' />
               </span>
             </Link>
           }

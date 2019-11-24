@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 import ReadTimeHUD from './ReadTimeHUD';
 import { enterMeansClick, is_mobile } from '../helper/misc';
 import FloatIn from './FloatIn';
@@ -78,7 +80,7 @@ const EditPageHeader = ({
               className='button greenButton smallButton' tabIndex={0}
               onClick={leave} onKeyUp={enterMeansClick(leave)}
             >
-              Finish
+              <FontAwesomeIcon icon={faCheck} className='faBigger' />
             </div>
           </FloatIn>
         </div>
@@ -88,7 +90,7 @@ const EditPageHeader = ({
               className='button redButton smallButton ml-2' tabIndex={0}
               onClick={deleteBlog} onKeyUp={enterMeansClick(deleteBlog)}
             >
-              Delete
+              <FontAwesomeIcon icon={faTrash} className='faBigger' />
             </div>
           </FloatIn>
         </div>
