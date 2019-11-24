@@ -64,6 +64,8 @@ const BlogEntry = ({ index, blog, type }) => {
             </div>
           }
         </div>
+        <div className='floatClear' />
+        <br />
       </div>
     );
   }

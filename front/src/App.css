@@ -283,6 +283,7 @@ h3 {
 }
 .myBlogEntryLeft {
   width: 100%;
+  position: relative;
 }
 .myBlogEntryLeftInner {
   display: inline-block;
@@ -292,14 +293,11 @@ h3 {
   width: 100%;
 }
 .myBlogEntryRight {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: -10px;
-  transform: translate(0, -5px);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .myBlogEntryRightInner {
-  float: right;
   background-color: white;
   position: relative;
-  margin: auto;
 }
