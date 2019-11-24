@@ -3,13 +3,16 @@ import BlogRead from './BlogRead';
 import BlogRate from './BlogRate';
 import BlogEnd from './BlogEnd';
 
-const BlogFlow = ({ blog, onFinish }) => {
+const BlogFlow = ({ blog, onFinish, editButton, mine_index }) => {
   const [page, setPage] = useState('read'); // read | rate | end
   const [my_opinion, setMy_opinion] = useState(blog.my_opinion);
 
   switch (page) {
     case 'read':
-      return <BlogRead blog={blog} setPage={setPage} />;
+      return <BlogRead 
+        blog={blog} setPage={setPage} editButton={editButton} 
+        mine_index={mine_index}
+      />;
     case 'rate':
       return <BlogRate setPage={setPage} setMy_opinion={setMy_opinion} />;
     case 'end':

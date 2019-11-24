@@ -45,7 +45,10 @@ const MinePage = ({ unAuth, whoami }) => {
   return (
     <div>
       <Hat whoami={whoami} />
-      <BlogFlow blog={blog} onFinish={toDashboard} />
+      <BlogFlow 
+        blog={blog} onFinish={toDashboard} editButton 
+        mine_index={mine_index}
+      />
     </div>
   );
 };

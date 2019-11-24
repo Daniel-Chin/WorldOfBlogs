@@ -10,7 +10,7 @@ const SKIP_ANIM_THRESHOLD = 5000;
 // If the user returned to this page and see the same blog, 
 // Skip the opening animation
 
-const BlogRead = ({ blog, setPage }) => {
+const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
   const {
     title, content, likes, hates, owner, 
     last_modified, access_time, my_opinion, 
@@ -69,6 +69,13 @@ const BlogRead = ({ blog, setPage }) => {
           }
           <span className='smallGray'>at</span>{' '}
           <span>{formatTime(last_modified)}</span>
+          {editButton &&
+            <Link to={`/edit/${mine_index}`}>
+              <span className='button smallButton grayButton ml-2'>
+                Edit
+              </span>
+            </Link>
+          }
         </FloatIn>
         <FloatIn show={stage >= 2} onEnd={updateStage.bind(3)}>
           <span className='likes mr-3'>

@@ -1,6 +1,5 @@
 tooltips
   You may not see their blogs, only the count
-edit button while viewing mine?
 expire has [object]
 
 to test:
