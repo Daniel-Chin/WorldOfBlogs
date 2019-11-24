@@ -83,6 +83,9 @@
   border: 1px solid #ccc;
   border-radius: 10px;
 }
+.credentialsCardMobile {
+  padding: 30px;
+}
 
 .CheckUsernameCard {
   color: white;
