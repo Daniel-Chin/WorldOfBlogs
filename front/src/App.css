@@ -257,3 +257,21 @@ h3 {
 .faBigger {
   font-size: 18px;
 }
+
+.BlogEntry {
+  text-align: left;
+}
+.BlogEntry > div {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: auto;
+}
+.BlogEntryLeft {
+  width: 55%;
+}
+.BlogEntryMiddle {
+  width: 10%;
+}
+.BlogEntryRight {
+  width: 35%;
+}

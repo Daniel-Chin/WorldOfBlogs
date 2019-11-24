@@ -17,7 +17,7 @@ const BlogList = ({ type, unAuth }) => {
         is_sub = false;
       };
     }
-  }, [blogs, setBlogs]);
+  }, [blogs, setBlogs, type, unAuth]);
 
   if (blogs === null) {
     return (
@@ -29,7 +29,7 @@ const BlogList = ({ type, unAuth }) => {
 
   return blogs.map((blog, i) => (
     <div key={i}>
-      <BlogEntry blog={blog} type={type} />
+      <BlogEntry index={i.toString()} blog={blog} type={type} />
     </div>
   ));
 };
