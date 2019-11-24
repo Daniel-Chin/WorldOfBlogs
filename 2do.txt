@@ -1,11 +1,10 @@
 tooltips
   You may not change your opinion
   You may not see their blogs, only the count
-ask delete if blog empty
 edit button while viewing mine?
+expire has [object]
 
 to test:
-  resume read
   tab flow in EditPage
   text rolling speed
 
