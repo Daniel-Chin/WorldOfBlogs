@@ -217,7 +217,7 @@
 
 .tiptool {
   user-select: none;
-  color: rgba(0, 0, 0, .5);
+  color: rgba(0, 0, 0, .3);
 }
 
 .tooltip {
@@ -231,4 +231,10 @@
 
 .red {
   color: #800;
+}
+
+.opinionTip {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 5px;
 }

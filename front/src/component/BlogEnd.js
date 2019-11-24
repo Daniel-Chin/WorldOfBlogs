@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import ReactTooltip from 'react-tooltip';
 import FloatIn from './FloatIn';
 import { enterMeansClick } from '../helper/misc';
 import MobilePad from './MobilePad';
@@ -9,7 +12,7 @@ const BlogEnd = ({ reset, my_opinion }) => {
     <div className='pad1020 centerAlign'>
       <MobilePad />
       <FloatIn show>
-        <p className='mt-3'>
+        <div className='mt-5 mb-3'>
           I'm glad you {' '}
           <span style={{
             color: {
@@ -21,11 +24,19 @@ const BlogEnd = ({ reset, my_opinion }) => {
           }}>
             {{
               like: 'liked that.', 
-              hate: 'hate that.', 
+              hate: 'hated that.', 
               none: `don't care.`, 
             }[my_opinion]}
           </span>
-        </p>
+          {' '}
+          <FontAwesomeIcon 
+            icon={faQuestionCircle} className='tiptool opinionTip' 
+            data-tip='You may not change your opinion.'
+          />
+          <ReactTooltip 
+            effect='solid' className='tooltip' place='left'
+          />
+        </div>
         <div 
           className='button blueButton mb-3' tabIndex={0}
           onClick={reset} onKeyUp={enterMeansClick(reset)}
