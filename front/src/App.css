@@ -240,6 +240,7 @@ h2 {
 .TwoColumn {
   width: 50%;
   display: inline-block;
+  vertical-align: top;
 }
 .TwoColumnInner {
   margin: 10px;
