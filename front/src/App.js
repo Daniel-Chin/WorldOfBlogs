@@ -73,7 +73,9 @@ const App = () => {
       <Route exact path='/dashboard' render={DashboardPage} />
       <Route exact path='/user/:username' render={UserPage} />
       <Route exact path='/history/:index' render={HistoryPage} />
-      <Route exact path='/mine/:index' render={MinePage} />
+      <Route exact path='/mine/:index'>
+        <MinePage unAuth={unAuth} whoami={whoami} />
+      </Route>
       <Route exact path='/edit/:mine_index'>
         <EditPage unAuth={unAuth} />
       </Route>

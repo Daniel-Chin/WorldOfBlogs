@@ -26,12 +26,18 @@ const EditPage = ({ unAuth }) => {
 
   useEffect(() => {
     if (title === null) {
+      let is_sub = true;
       GET('getMine', { params: {
         mine_index, 
       } }, unAuth).then((res) => {
-        setTitle(res.title);
-        setContent(res.content);
+        if (is_sub) {
+          setTitle(res.title);
+          setContent(res.content);
+        }
       });
+      return function () {
+        is_sub = false;
+      };
     }
   }, [title, setTitle, setContent, unAuth, mine_index]);
 

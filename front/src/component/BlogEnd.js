@@ -7,7 +7,7 @@ import FloatIn from './FloatIn';
 import { enterMeansClick } from '../helper/misc';
 import MobilePad from './MobilePad';
 
-const BlogEnd = ({ reset, my_opinion }) => {
+const BlogEnd = ({ onFinish, my_opinion }) => {
   return (
     <div className='pad1020 centerAlign'>
       <MobilePad />
@@ -39,7 +39,7 @@ const BlogEnd = ({ reset, my_opinion }) => {
         </div>
         <div 
           className='button blueButton mb-3' tabIndex={0}
-          onClick={reset} onKeyUp={enterMeansClick(reset)}
+          onClick={onFinish} onKeyUp={enterMeansClick(onFinish)}
         >
           Ok. Next Blog
         </div>
