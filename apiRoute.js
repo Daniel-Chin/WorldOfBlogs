@@ -143,8 +143,8 @@ apiRouter.get('/listHistory', authMidware, (req, res) => {
         if (blog === DELETED) {
           return false;
         }
-        const { title, owner, last_modified } = blog;
-        return { title, owner, last_modified };
+        const { title, owner } = blog;
+        return { title, owner };
       }
     ));
   });

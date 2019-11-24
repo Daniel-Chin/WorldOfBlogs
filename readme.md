@@ -135,7 +135,7 @@ Request: GET, cookie
 Response: 
 ```js
 [
-  { title, owner, last_modified }, 
+  { title, owner }, 
   ... // `false` if blog is deleted
 ]
 ```
