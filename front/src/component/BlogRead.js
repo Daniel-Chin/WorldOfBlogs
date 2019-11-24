@@ -62,7 +62,7 @@ const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
         </FloatIn>
         <FloatIn 
           show={stage >= 1} onEnd={updateStage.bind(2)} 
-          wait={(title_time || 0) * 2}
+          wait={(title_time || 0) + 500}
         >
           <span className='smallGray'>written by</span>{' '}
           <Link to={'/user/' + owner}>{owner}</Link>{' '}

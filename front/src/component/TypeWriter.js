@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const INTRO_TIME = 4500;
+const INTRO_TIME = 5000;
 
 const TypeWriter = ({ parsed, onEnd, access_time, title_time }) => {
   const [n_paragraph, setN_paragraph] = useState(1);
