@@ -12,6 +12,7 @@ import HistoryPage from './container/HistoryPage';
 import MinePage from './container/MinePage';
 import EditPage from './container/EditPage';
 import NewPage from './container/NewPage';
+import ChangePasswordPage from './container/ChangePasswordPage';
 import InvalidCookiePage from './container/InvalidCookiePage';
 import { GET } from './helper/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -87,6 +88,9 @@ const App = () => {
           whoami={whoami} setWhoami={setWhoami} 
           invalid_cookie={invalid_cookie} unAuth={unAuth}
         />
+      </Route>
+      <Route exact path='/changepassword'>
+        <ChangePasswordPage unAuth={unAuth} whoami={whoami} />
       </Route>
       <Route>
         404 No such URL
