@@ -9,6 +9,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 ## Issues
 * Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console) Expect to see some red when you open the console.  
 * Should have used `useContext` for `whoami` and `unAuth`...  
+* Canceling api call due to useEffect clean up leads to duplicates requests. My backend is not repetition-proof, so there are race-condition problems with pages like changePasswordPage.  
 
 ## Data Structure
 ### User
