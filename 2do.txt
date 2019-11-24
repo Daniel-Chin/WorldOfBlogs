@@ -1,5 +1,4 @@
 tooltips
-  You may not change your opinion
   You may not see their blogs, only the count
 edit button while viewing mine?
 expire has [object]

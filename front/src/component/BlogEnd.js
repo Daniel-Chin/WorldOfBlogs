@@ -41,7 +41,7 @@ const BlogEnd = ({ reset, my_opinion }) => {
           className='button blueButton mb-3' tabIndex={0}
           onClick={reset} onKeyUp={enterMeansClick(reset)}
         >
-          Ok, next blog
+          Ok. Next Blog
         </div>
         <br />
         <div className='smaller'>
