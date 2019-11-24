@@ -112,6 +112,7 @@
   display:inline-block;
 } .underlink:hover {
   transform: scale(1.4);
+  color: #00f;
 } .underlink:focus {
   transform: scale(1.4);
 }
