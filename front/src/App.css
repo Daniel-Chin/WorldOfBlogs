@@ -148,7 +148,7 @@
 }
 
 .MobilePad {
-  margin-top: 150px;
+  margin-top: 20vh;
 }
 
 .input {
@@ -229,5 +229,6 @@
   color: #800;
 }
 
-.opinionTip {
+h2 {
+  font-size: 32px;
 }
