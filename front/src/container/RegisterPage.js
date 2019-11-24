@@ -53,25 +53,19 @@ const RegisterPage = ({ whoami, unAuth, setWhoami }) => {
   const onRegister = () => {
     setFetch_state('waiting');
     const options = { params: { username, password } };
-    let is_sub = true;
     GET('user/register', options).then(
       (res) => {
         if (res.is_ok) {
           login(options.params, setWhoami).then((_) => {
-            if (is_sub) {
-              setFetch_state('ok');
-              setPassword('');  // Don't let user password hang around in RAM
-            }
+            setFetch_state('ok');
+            setPassword('');  // Don't let user password hang around in RAM
           });
         } else {
-          if (is_sub) {
-            setFetch_state('none');
-            setError_msg(res.message);
-          }
+          setFetch_state('none');
+          setError_msg(res.message);
         }
       }
     );
-    return () => {is_sub = false;};
   };
   
   const closeModal = function () {
