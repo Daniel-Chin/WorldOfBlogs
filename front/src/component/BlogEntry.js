@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const BlogEntry = ({ index, blog, type }) => {
+  const [right_visible, setRight_visible] = useState(false);
+
+  const mouseIn = function () {
+    setRight_visible(true);
+  };
+  const mouseOut = function () {
+    setRight_visible(false);
+  };
+
   if (blog === false) {
     return (
       <span>--- DELETED ---</span>
@@ -30,9 +41,30 @@ const BlogEntry = ({ index, blog, type }) => {
 
   if (type === 'Mine') {
     return (
-      <Link to={'/mine/' + index}>
-        {blog.title}
-      </Link>
+      <div 
+        className='myBlogEntry' 
+        onMouseEnter={mouseIn} onMouseLeave={mouseOut}
+      >
+        <div className='myBlogEntryLeft'>
+          <div className='myBlogEntryLeftInner'>
+            <Link to={'/mine/' + index}>
+              {blog.title}
+            </Link>
+          </div>
+        </div>
+        <div className='myBlogEntryRight'>
+          {right_visible &&
+            <div className='myBlogEntryRightInner'>
+              <div className='button smallButton greenButton'>
+                <FontAwesomeIcon icon={faPen} />
+              </div>
+              <div className='button smallButton redButton ml-1'>
+                <FontAwesomeIcon icon={faTrash} />
+              </div>
+            </div>
+          }
+        </div>
+      </div>
     );
   }
 };

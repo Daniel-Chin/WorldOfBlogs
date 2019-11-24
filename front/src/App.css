@@ -248,6 +248,7 @@ h2 {
 
 .columnTitle {
   border-bottom: 1px black solid;
+  margin-bottom: 10px;
 }
 h3 {
   margin-bottom: 0;
@@ -274,4 +275,31 @@ h3 {
 }
 .BlogEntryRight {
   width: 30%;
+}
+
+.myBlogEntry {
+  text-align: left;
+  position: relative;
+}
+.myBlogEntryLeft {
+  width: 100%;
+}
+.myBlogEntryLeftInner {
+  display: inline-block;
+  position: absolute;
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
+}
+.myBlogEntryRight {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: -10px;
+  transform: translate(0, -5px);
+}
+.myBlogEntryRightInner {
+  float: right;
+  background-color: white;
+  position: relative;
+  margin: auto;
 }
