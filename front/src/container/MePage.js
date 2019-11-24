@@ -14,13 +14,13 @@ const MePage = ({ whoami }) => {
               View my public profile
             </span>
           </Link>
-          <Link to='/changpassword'>
+          <Link to='/changepassword'>
             <span className='button grayButton m-1' tabIndex={0}>
               Change my password
             </span>
           </Link>
         </div>
-        
+
       </div>
     </>
   );
