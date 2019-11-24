@@ -8,7 +8,7 @@ const SAVE_CAPTION = is_mobile ? 'Save' : 'Save (⌘Command + S)';
 
 const EditPageHeader = ({
   save_stage, save, mine_index, title, content, 
-  setMenu_visible, 
+  setMenu_visible, deleteBlog, 
 }) => {
   const [did_leave, setDid_leave] = useState(false);
   const [confirm_discard, setConfirm_discard] = useState(false);
@@ -79,6 +79,16 @@ const EditPageHeader = ({
               onClick={leave} onKeyUp={enterMeansClick(leave)}
             >
               Finish
+            </div>
+          </FloatIn>
+        </div>
+        <div className='floatLeft'>
+          <FloatIn show={content === '' && title === ''}>
+            <div
+              className='button redButton smallButton ml-2' tabIndex={0}
+              onClick={deleteBlog} onKeyUp={enterMeansClick(deleteBlog)}
+            >
+              Delete
             </div>
           </FloatIn>
         </div>

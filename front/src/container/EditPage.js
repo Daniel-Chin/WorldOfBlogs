@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import EditPageHeader from '../component/EditPageHeader';
@@ -22,6 +22,7 @@ const EditPage = ({ unAuth }) => {
   const [save_stage, setSave_stage] = useState('saved');
   const [response, setResponse] = useState(null);
   const [error_msg, setError_msg] = useState(null);
+  const [delete_stage, setDelete_stage] = useState('none');
 
   useEffect(() => {
     if (title === null) {
@@ -106,9 +107,48 @@ const EditPage = ({ unAuth }) => {
     }
   };
 
+  const deleteBlog = function () {
+    setDelete_stage('deleting');
+    GET('delBlog', { params: {
+      mine_index, 
+    } }, unAuth).then(() => {
+      setDelete_stage('deleted');
+    });
+  };
+
   const closeModal = function () {
     setError_msg(null);
   };
+
+  if (delete_stage !== 'none') {
+    return (
+      <div className='centerAlign mt-5'>
+        <MobilePad />
+        {delete_stage === 'deleting' ?
+          <FloatIn show>
+            <p>Deleting the blog...</p>
+            <p>
+              This may take a while. 
+              We are erasing your traces from the entire database. 
+            </p>
+          </FloatIn>
+        :
+          <>
+            <p>
+              Successfully deleted. 
+            </p>
+            <Link to='/view'>
+              <div
+                className='button blueButton' tabIndex={0}
+              >
+                OK
+              </div>
+            </Link>
+          </>
+        }
+      </div>
+    );
+  }
 
   if (title === null || content === null) {
     return (
@@ -158,6 +198,7 @@ const EditPage = ({ unAuth }) => {
           save_stage={save_stage} save={save} 
           mine_index={mine_index} title={title} 
           content={content} setMenu_visible={setMenu_visible}
+          deleteBlog={deleteBlog}
         />
       </div>
       <div className='titleRow' style={{
