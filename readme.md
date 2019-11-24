@@ -179,7 +179,7 @@ Response: 'ok'
   if not logged: it is very important that you register.
   this many ppl liked. hated.
   rate
-  next | Me | post a blog
+  next | post a blog
 ### /Me
   change pw
   my blogs

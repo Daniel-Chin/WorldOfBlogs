@@ -45,14 +45,6 @@ const BlogEnd = ({ onFinish, my_opinion }) => {
         </div>
         <br />
         <div className='smaller'>
-          <Link to='/Me'>
-            <div 
-              className='button mb-2' tabIndex={0}
-            >
-              Me
-            </div>
-          </Link>
-          <br />
           <Link to='/new'>
             <div 
               className='button' tabIndex={0}
@@ -60,6 +52,7 @@ const BlogEnd = ({ onFinish, my_opinion }) => {
               Write a Blog
             </div>
           </Link>
+          <br />
         </div>
       </FloatIn>
     </div>
