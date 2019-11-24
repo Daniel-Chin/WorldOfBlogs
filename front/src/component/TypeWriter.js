@@ -14,14 +14,12 @@ const TypeWriter = ({ parsed, onEnd, access_time, title_time }) => {
     const word_time = parsed[n_paragraph - 1][n_line - 1][n_word - 1].time;
     let time = Date.now() - access_time - time_passed - title_time - INTRO_TIME;
     if (time > 0) {
-      console.log(time);
       time = 1;
     } else {
       time = word_time;
     }
     const timeout = setTimeout(() => {
       setTime_passed((x) => (x + word_time));
-      console.log('p', time_passed);
       if (n_word === parsed[n_paragraph - 1][n_line - 1].length) {
         if (n_line === parsed[n_paragraph - 1].length) {
           if (n_paragraph === parsed.length) {
