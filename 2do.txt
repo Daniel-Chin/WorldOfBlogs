@@ -5,8 +5,6 @@ edit button while viewing mine?
 expire has [object]
 
 to test:
-  tab flow in EditPage
-  text rolling speed
 
 // Blog preview, reuse component.
 // User can change css!

@@ -212,7 +212,7 @@ const EditPage = ({ unAuth }) => {
         />
         <div 
           className='toggleButton' onClick={toggleMenu}
-          tabIndex={0} onKeyUp={enterMeansClick(toggleMenu)}
+          tabIndex={1} onKeyUp={enterMeansClick(toggleMenu)}
         >
           <div style={{
             transform: `scale(1, ${menu_visible ? 1 : -1})`, 
@@ -228,7 +228,7 @@ const EditPage = ({ unAuth }) => {
         </div>
       </div>
       <textarea 
-        type='text' autoFocus className='input contentInput'
+        type='text' className='input contentInput'
         placeholder='Write...' value={content} 
         onChange={onContentChange}
       />
