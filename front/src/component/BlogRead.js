@@ -60,7 +60,7 @@ const BlogRead = ({ blog, setPage }) => {
         </FloatIn>
         <FloatIn 
           show={stage >= 1} onEnd={updateStage.bind(2)} 
-          wait={title_time * 2}
+          wait={(title_time || 0) * 2}
         >
           <span className='smallGray'>written by</span>{' '}
           <Link to={'/user/' + owner}>{owner}</Link>{' '}
@@ -82,7 +82,7 @@ const BlogRead = ({ blog, setPage }) => {
       <FloatIn show={stage >= 3}>
         <TypeWriter 
           parsed={parsed_content} onEnd={updateStage.bind(4)} 
-          access_time={access_time}
+          access_time={access_time} title_time={title_time}
         />
       </FloatIn>
       <FloatIn show={stage >= 4}>
