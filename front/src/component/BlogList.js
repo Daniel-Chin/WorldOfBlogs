@@ -29,7 +29,10 @@ const BlogList = ({ type, unAuth }) => {
 
   return blogs.map((blog, i) => (
     <div key={i}>
-      <BlogEntry index={i.toString()} blog={blog} type={type} />
+      <BlogEntry 
+        index={i.toString()} blog={blog} type={type} 
+        unAuth={unAuth}
+      />
     </div>
   ));
 };

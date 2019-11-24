@@ -10,16 +10,12 @@ const MePage = ({ whoami, unAuth }) => {
       <div className='centerAlign pad1020'>
       <h2>Yo, {whoami}</h2>
         <div>
-          <Link to={'/user/' + whoami}>
-            <span className='button grayButton m-1' tabIndex={0}>
-              View my public profile
-            </span>
+          <Link className='button grayButton m-1' to={'/user/' + whoami}>
+            View my public profile
           </Link>
           <br />
-          <Link to='/changepassword'>
-            <span className='button grayButton m-1' tabIndex={0}>
-              Change my password
-            </span>
+          <Link className='button grayButton m-1' to='/changepassword'>
+            Change my password
           </Link>
         </div>
         <div>

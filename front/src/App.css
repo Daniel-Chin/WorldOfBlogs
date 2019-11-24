@@ -257,6 +257,7 @@ h3 {
 
 .faBigger {
   font-size: 18px;
+  vertical-align: text-top;
 }
 
 .BlogEntry {

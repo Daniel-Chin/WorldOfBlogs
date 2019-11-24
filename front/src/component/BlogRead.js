@@ -72,10 +72,11 @@ const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
           <span className='smallGray'>at</span>{' '}
           <span>{formatTime(last_modified)}</span>
           {editButton &&
-            <Link className='ml-2' to={`/edit/${mine_index}`}>
-              <span className='button smallButton greenButton'>
-                <FontAwesomeIcon icon={faPen} className='faBigger' />
-              </span>
+            <Link 
+              className='button smallButton greenButton ml-2' 
+              to={`/edit/${mine_index}`}
+            >
+              <FontAwesomeIcon icon={faPen} className='faBigger' />
             </Link>
           }
         </FloatIn>
