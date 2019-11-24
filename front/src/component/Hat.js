@@ -18,8 +18,8 @@ const Hat = ({ whoami }) => {
             </Dropdown.Toggle>
             <Dropdown.Menu alignRight>
               <Dropdown.Item className='button whiteButton' href="#/view">World of Blogs</Dropdown.Item>
-              <Dropdown.Item className='button whiteButton' href="#/Me">Me</Dropdown.Item>
               <Dropdown.Item className='button whiteButton' href="#/new">Write a Blog</Dropdown.Item>
+              <Dropdown.Item className='button whiteButton' href="#/Me">Me</Dropdown.Item>
               <Dropdown.Item className='button whiteButton' href="#/logout">Sign Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
