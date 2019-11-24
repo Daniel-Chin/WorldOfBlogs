@@ -179,8 +179,8 @@ Response: 'ok'
   if not logged: it is very important that you register.
   this many ppl liked. hated.
   rate
-  next | dashboard | post a blog
-### /dashboard
+  next | Me | post a blog
+### /Me
   change pw
   my blogs
   history

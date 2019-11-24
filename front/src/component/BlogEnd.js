@@ -45,11 +45,11 @@ const BlogEnd = ({ onFinish, my_opinion }) => {
         </div>
         <br />
         <div className='smaller'>
-          <Link to='/dashboard'>
+          <Link to='/Me'>
             <div 
               className='button mb-2' tabIndex={0}
             >
-              My Dashboard
+              Me
             </div>
           </Link>
           <br />

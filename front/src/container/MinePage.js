@@ -8,10 +8,10 @@ const MinePage = ({ unAuth, whoami }) => {
   const mine_index = useParams().index;
 
   const [blog, setBlog] = useState(null);
-  const [to_dashboard, setTo_dashboard] = useState(false);
+  const [to_Me, setTo_Me] = useState(false);
 
-  const toDashboard = function () {
-    setTo_dashboard(true);
+  const toMe = function () {
+    setTo_Me(true);
   }
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const MinePage = ({ unAuth, whoami }) => {
     }
   });
 
-  if (to_dashboard) {
-    return <Redirect to='/dashboard' />
+  if (to_Me) {
+    return <Redirect to='/Me' />
   }
 
   if (blog === null) {
@@ -46,7 +46,7 @@ const MinePage = ({ unAuth, whoami }) => {
     <div>
       <Hat whoami={whoami} />
       <BlogFlow 
-        blog={blog} onFinish={toDashboard} editButton 
+        blog={blog} onFinish={toMe} editButton 
         mine_index={mine_index}
       />
     </div>

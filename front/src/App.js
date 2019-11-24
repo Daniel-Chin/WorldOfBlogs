@@ -6,7 +6,7 @@ import RegisterPage from './container/RegisterPage';
 import LoginPage from './container/LoginPage';
 import LogoutPage from './container/LogoutPage';
 import ViewPage from './container/ViewPage';
-import DashboardPage from './container/DashboardPage';
+import MePage from './container/MePage';
 import UserPage from './container/UserPage';
 import HistoryPage from './container/HistoryPage';
 import MinePage from './container/MinePage';
@@ -71,7 +71,7 @@ const App = () => {
       <Route exact path='/view'>
         <ViewPage whoami={whoami} unAuth={unAuth} />
       </Route>
-      <Route exact path='/dashboard' render={DashboardPage} />
+      <Route exact path='/Me' render={MePage} />
       <Route exact path='/user/:username' render={UserPage} />
       <Route exact path='/history/:index' render={HistoryPage} />
       <Route exact path='/mine/:index'>

@@ -15,7 +15,7 @@ const ChangePasswordPage = ({ whoami, unAuth }) => {
   const [error_msg, setError_msg] = useState(null);
 
   if (fetch_state === 'ok') {
-    return <Redirect to='/dashboard' />
+    return <Redirect to='/Me' />
   }
 
   const onOldChange = (event) => {
