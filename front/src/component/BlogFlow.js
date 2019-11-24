@@ -4,8 +4,7 @@ import BlogRate from './BlogRate';
 import BlogEnd from './BlogEnd';
 
 const BlogFlow = ({ blog, reset }) => {
-  // const [page, setPage] = useState('read'); // read | rate | end
-  const [page, setPage] = useState('end'); // read | rate | end
+  const [page, setPage] = useState('read'); // read | rate | end
   const [my_opinion, setMy_opinion] = useState(blog.my_opinion);
 
   switch (page) {

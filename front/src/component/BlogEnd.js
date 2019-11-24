@@ -12,7 +12,7 @@ const BlogEnd = ({ reset, my_opinion }) => {
     <div className='pad1020 centerAlign'>
       <MobilePad />
       <FloatIn show>
-        <div className='mt-5 mb-3'>
+        <div className='mt-3 mb-3'>
           I'm glad you {' '}
           <span style={{
             color: {
@@ -28,13 +28,13 @@ const BlogEnd = ({ reset, my_opinion }) => {
               none: `don't care.`, 
             }[my_opinion]}
           </span>
-          {' '}
+          <br />
           <FontAwesomeIcon 
             icon={faQuestionCircle} className='tiptool opinionTip' 
             data-tip='You may not change your opinion.'
           />
           <ReactTooltip 
-            effect='solid' className='tooltip' place='left'
+            effect='solid' className='tooltip'
           />
         </div>
         <div 
