@@ -28,11 +28,13 @@ const BlogList = ({ type, unAuth }) => {
   }
 
   return blogs.map((blog, i) => (
+    [<BlogEntry 
+      index={i.toString()} blog={blog} type={type} 
+      unAuth={unAuth}
+    />, blog.last_modified || i]
+  )).sort((a, b) => (b[1] - a[1])).map((x, i) => (
     <div key={i}>
-      <BlogEntry 
-        index={i.toString()} blog={blog} type={type} 
-        unAuth={unAuth}
-      />
+      {x[0]}
     </div>
   ));
 };

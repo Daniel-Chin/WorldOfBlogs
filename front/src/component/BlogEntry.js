@@ -25,7 +25,7 @@ const BlogEntry = ({ index, blog, type, unAuth }) => {
         is_sub = false;
       };
     }
-  }, [del_stage, setDel_stage]);
+  }, [del_stage, setDel_stage, unAuth, index]);
 
   const mouseIn = function () {
     setRight_visible(true);
