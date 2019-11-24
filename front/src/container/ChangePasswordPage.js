@@ -27,16 +27,18 @@ const ChangePasswordPage = ({ whoami, unAuth }) => {
 
   const onSubmit = function() {
     setFetch_state('waiting');
-    const options = { params: {
+    let is_sub = true;
+    GET('user/changePassword', { params: {
       old_password: old, 
       new_password: password, 
-    } };
-    let is_sub = true;
-    GET('user/changePassword', options, unAuth).then(
+    } }, unAuth).then(
       (res) => {
         if (res && res.is_ok) {
           // login to refresh token to log hackers out 
-          login(options.params, ()=>{}).then((_) => {
+          login({
+            username: whoami, 
+            password, 
+          }, ()=>{}).then((_) => {
             if (is_sub) {
               setFetch_state('ok');
               setPassword('');  // Don't let user password hang around in RAM
