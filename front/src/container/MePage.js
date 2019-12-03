@@ -8,7 +8,7 @@ const MePage = ({ whoami, unAuth }) => {
     <>
       <Hat whoami={whoami} />
       <div className='centerAlign pad1020'>
-      <h2>Yo, {whoami}</h2>
+        <h2>Yo, {whoami}</h2>
         <div>
           <Link className='button grayButton m-1' to={'/user/' + whoami}>
             View my public profile
