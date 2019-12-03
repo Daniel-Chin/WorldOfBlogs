@@ -29,11 +29,11 @@ const ViewPage = ({ whoami, unAuth }) => {
         <MobilePad />
         <FloatIn show>
           <p className='mt-5'>
-            It is very important that you 
+            <b>You shall not read any blogs</b> unless you
           </p>
           <Link to='/register'>
             <div className='button blueButton'>
-              Sign Up First
+              Sign Up 
             </div>
           </Link>
         </FloatIn>
