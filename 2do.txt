@@ -1,5 +1,3 @@
-tooltips
-  You may not see their blogs, only the count
 expire has [object]
 
 to test:

@@ -187,7 +187,6 @@ Response: 'ok'
   history
   link to /user/{me}
 ### /user/:username
-  quote
   Shows how many blogs, but no link
 ### /history/:index
 ### /mine/:index
