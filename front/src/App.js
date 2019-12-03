@@ -77,7 +77,9 @@ const App = () => {
       <Route exact path='/user/:username'>
         <UserPage whoami={whoami} unAuth={unAuth} />
       </Route>
-      <Route exact path='/history/:index' render={HistoryPage} />
+      <Route exact path='/history/:index'>
+        <HistoryPage unAuth={unAuth} whoami={whoami} />
+      </Route>
       <Route exact path='/mine/:index'>
         <MinePage unAuth={unAuth} whoami={whoami} />
       </Route>
