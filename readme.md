@@ -4,7 +4,9 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 ## Features
 * The blogs cannot be accessed by their global ID. Users access blogs via their personal pointers to the blogs. This way, indexing the blogs becomes impossible.  
 * Passwords are hashed and salted using [bcrypt](https://www.npmjs.com/package/bcrypt)  
-* Registration race condition solved by [Firebase Transaction](https://firebase.google.com/docs/firestore/manage-data/transactions).  
+* Race conditions solved by [Firebase Transaction](https://firebase.google.com/docs/firestore/manage-data/transactions).  
+* Blogs are rolled out according to human reading speed.  
+* Refreshing the page does not reset the rolling progress.  
 
 ## Issues
 * Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console) Expect to see some red when you open the console.  
