@@ -1,6 +1,9 @@
 # World of Blogs
 Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.  
 
+## Demo
+[world-of-blogs.herokuapp.com](https://world-of-blogs.herokuapp.com)  
+
 ## Features
 * The blogs cannot be accessed by their global ID. Users access blogs via their personal pointers to the blogs. This way, indexing the blogs becomes impossible.  
 * Passwords are hashed and salted using [bcrypt](https://www.npmjs.com/package/bcrypt)  
