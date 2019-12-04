@@ -9,7 +9,7 @@ Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.
 * Refreshing the page does not reset the rolling progress.  
 
 ## Issues
-* Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console) Expect to see some red when you open the console.  
+* Chrome dev console is verbose with rejected REST requests, even when the errors are well caught. See [StackOverflow](https://stackoverflow.com/questions/4500741/suppress-chrome-failed-to-load-resource-messages-in-console). Expect to see some red when you open the console.  
 * Should have used `useContext` for `whoami` and `unAuth`...  
 * Canceling api call due to useEffect clean up leads to duplicates requests. My backend is not repetition-proof, so there are race-condition problems with pages like changePasswordPage.  
 * Username is case-sensitive. That means "Daniel" and "daniel" can be two different users. This is not good, but this results from Firestore having case-sensitive document ID.  
@@ -176,11 +176,11 @@ Response: 'ok'
 ### /register
   already have an account? log in
 ### /login
-  if you are logged in, "But you are already logged in." Log out button
+  if you are logged in, to /view
 ### /logout
-  log out button. to '/'
+  log out button. After log out, to '/'
 ### /view
-  if not logged: it is very important that you register.
+  if not logged in: "it is very important that you register."
   this many ppl liked. hated.
   rate
   next | post a blog
@@ -192,8 +192,15 @@ Response: 'ok'
 ### /user/:username
   Shows how many blogs, but no link
 ### /history/:index
+  The blog you viewed, accessed by the index  
 ### /mine/:index
+  The blog you wrote, accessed by the index  
 ### /edit/:mine_index
+  Edit a blog you wrote  
 ### /new
+  Create a blog  
 ### /invalid-cookie
   'Your sign in has expired. '  
+
+## Future Work
+* User quotes  
