@@ -51,7 +51,7 @@ const isUsernameValid = (username) => {
       break;
     }
   }
-  if (username === 'admin') {
+  if (username.toLowerCase() === 'admin') {
     error_message = 'Do not try to pretend to be the admin. ';
   }
   return {
