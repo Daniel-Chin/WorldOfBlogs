@@ -12,7 +12,10 @@ const SKIP_ANIM_THRESHOLD = 5000;
 // If the user returned to this page and see the same blog, 
 // Skip the opening animation
 
-const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
+const BlogRead = ({
+  blog, setPage, editButton, mine_index,
+  do_rate, onFinish,
+}) => {
   const {
     title, content, likes, hates, owner, 
     last_modified, access_time, my_opinion, 
@@ -47,10 +50,14 @@ const BlogRead = ({ blog, setPage, editButton, mine_index }) => {
     setStage(Math.max(stage, this));
   }
   const finish = function () {
-    if (my_opinion) {
-      setPage('end')
+    if (do_rate) {
+      if (my_opinion) {
+        setPage('end')
+      } else {
+        setPage('rate');
+      }
     } else {
-      setPage('rate');
+      onFinish();
     }
   };
 

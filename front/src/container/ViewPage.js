@@ -69,7 +69,7 @@ const ViewPage = ({ whoami, unAuth }) => {
   return (
     <div>
       <Hat whoami={whoami} />
-      <BlogFlow blog={blog} onFinish={reset} />
+      <BlogFlow blog={blog} onFinish={reset} do_rate />
     </div>
   );
 };
