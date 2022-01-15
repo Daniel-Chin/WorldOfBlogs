@@ -1,6 +1,8 @@
 # World of Blogs
 Final project for Dynamic Web App @ Tandon @ NYU by Daniel Chin.  
 
+***I stopped security maintenance since 2021. Check package vulnerability before executing.***
+
 ## Demo
 [world-of-blogs.herokuapp.com](https://world-of-blogs.herokuapp.com)  
 
